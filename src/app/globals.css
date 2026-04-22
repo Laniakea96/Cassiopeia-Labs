@@ -1314,12 +1314,8 @@ section.block {
 .contact-card {
   padding: 40px;
   border-radius: var(--r-card);
-  background: linear-gradient(
-    180deg,
-    rgba(4, 4, 6, 0.88),
-    rgba(4, 4, 6, 0.78)
-  );
-  backdrop-filter: blur(24px) saturate(1.1);
+  background: transparent;
+  backdrop-filter: blur(24px) saturate(1.4);
   border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
