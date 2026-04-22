@@ -67,8 +67,8 @@ export default function PrivacyPage() {
             Una política por app, redactada en{" "}
             <span className="accent-amber">lenguaje directo</span>. Estas
             páginas cumplen los requisitos de{" "}
-            <span className="accent-purple">App Store</span> y{" "}
-            <span className="accent-indigo">Google Play</span> y se enlazan
+            <span className="accent-yellow">App Store</span> y{" "}
+            <span className="accent-orange">Google Play</span> y se enlazan
             desde la ficha de cada producto.
           </p>
         </div>

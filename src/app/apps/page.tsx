@@ -51,10 +51,6 @@ export default function AppsPage() {
     <>
       <section className="hero compact wrap">
         <div className="hero-inner stagger">
-          <span className="eyebrow">
-            <span className="dot" />
-            Catálogo
-          </span>
           <h1 className="hero-title">
             Tres apps, <span className="serif">tres estrellas.</span>
           </h1>
