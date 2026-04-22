@@ -3,8 +3,21 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
+const ORB_PALETTE = ["#2e4bff", "#5fb8ff", "#e8f0ff", "#ff5c8a"];
+
 export default function SiteEffects() {
   const pathname = usePathname();
+
+  useEffect(() => {
+    const orbs = document.querySelectorAll<HTMLElement>(".bg-stack .orb");
+    if (orbs.length > 0) {
+      const shuffled = [...ORB_PALETTE].sort(() => Math.random() - 0.5);
+      orbs.forEach((orb, i) => {
+        orb.style.background = shuffled[i % shuffled.length];
+      });
+    }
+  }, []);
+
   useEffect(() => {
     const nav = document.getElementById("nav");
 

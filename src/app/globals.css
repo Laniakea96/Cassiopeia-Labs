@@ -1,5 +1,5 @@
 :root {
-  --bg: #000;
+  --bg: #1a1a3e;
   --bg-elev: #0a0a0c;
   --bg-privacy: #0c0c0e;
   --fg: #f5f5f7;
@@ -94,27 +94,27 @@ button {
   will-change: transform;
 }
 .orb-blue {
-  background: #ff9f0a;
+  background: #2e4bff;
   top: -18vmax;
   left: -12vmax;
   animation: drift1 24s ease-in-out infinite;
 }
 .orb-purple {
-  background: #bf5af2;
+  background: #5fb8ff;
   top: 28vmax;
   right: -18vmax;
   opacity: 0.55;
   animation: drift2 28s ease-in-out infinite;
 }
 .orb-red {
-  background: #ff6b00;
+  background: #ff5c8a;
   bottom: -22vmax;
   left: 20vmax;
   opacity: 0.5;
   animation: drift3 32s ease-in-out infinite;
 }
 .orb-extra {
-  background: #8e3fd4;
+  background: #e8f0ff;
   top: -6vmax;
   right: 8vmax;
   width: 42vmax;
