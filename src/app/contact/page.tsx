@@ -1,75 +1,95 @@
 import type { Metadata } from "next";
-import Container from "@/components/ui/Container";
-import AnimatedSection from "@/components/ui/AnimatedSection";
-import { siteConfig } from "@/data/siteConfig";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with Cassiopeia Labs.",
+  title: "Contacto",
+  description: "Ponte en contacto con Cassiopeia Labs.",
 };
+
+const CONTACT_EMAIL = "hola@cassiopeialabs.com";
 
 export default function ContactPage() {
   return (
-    <div className="py-24">
-      <Container>
-        <AnimatedSection>
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Get in Touch
-            </h1>
-            <p className="text-muted text-lg mb-12">
-              Have a question, feedback, or just want to say hello? I&apos;d
-              love to hear from you.
+    <>
+      <section className="hero compact wrap">
+        <div className="hero-inner stagger">
+          <span className="eyebrow">
+            <span className="dot" />
+            Disponible para colaborar
+          </span>
+          <h1 className="hero-title">
+            Hablemos, <span className="serif">sin prisa.</span>
+          </h1>
+          <p className="hero-sub">
+            Leemos <span className="accent-amber">todos</span> los correos. Si
+            escribes con una <span className="accent-orange">idea</span>, una
+            duda o simplemente para{" "}
+            <span className="accent-purple">saludar</span>, te responderemos.
+          </p>
+        </div>
+      </section>
+
+      <section className="block wrap">
+        <div className="contact-grid">
+          <div className="contact-card reveal">
+            <h3>Email directo</h3>
+            <p>
+              La forma más rápida y la que preferimos. Escríbenos contando lo
+              que tengas en mente.
             </p>
-
-            <div className="bg-surface-raised border border-border rounded-2xl p-8 text-left space-y-6">
-              <div>
-                <h3 className="text-sm font-semibold text-foreground mb-2">
-                  Email
-                </h3>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="text-brand-400 hover:text-brand-300 transition-colors"
-                >
-                  {siteConfig.email}
-                </a>
-              </div>
-
-              {siteConfig.social.twitter && (
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-2">
-                    Twitter / X
-                  </h3>
-                  <a
-                    href={siteConfig.social.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-brand-400 hover:text-brand-300 transition-colors"
-                  >
-                    @cassiopeialabs
-                  </a>
-                </div>
-              )}
-
-              {siteConfig.social.github && (
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-2">
-                    GitHub
-                  </h3>
-                  <a
-                    href={siteConfig.social.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-brand-400 hover:text-brand-300 transition-colors"
-                  >
-                    cassiopeialabs
-                  </a>
-                </div>
-              )}
-            </div>
+            <a href={`mailto:${CONTACT_EMAIL}`} className="big-email">
+              {CONTACT_EMAIL}
+            </a>
           </div>
-        </AnimatedSection>
-      </Container>
-    </div>
+
+          <div className="contact-card reveal">
+            <h3>En la red</h3>
+            <p>
+              Publicamos código y procesos abiertos cuando tiene sentido.
+            </p>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                display: "grid",
+                gap: "14px",
+              }}
+            >
+              <li>
+                <a
+                  href="https://github.com/Laniakea96"
+                  target="_blank"
+                  rel="noopener"
+                  className="link-quiet"
+                  style={{ fontSize: "15px" }}
+                >
+                  GitHub · Laniakea96 <span className="arrow">↗</span>
+                </a>
+              </li>
+              <li>
+                <Link
+                  href="/privacy"
+                  className="link-quiet"
+                  style={{ fontSize: "15px" }}
+                >
+                  Políticas de privacidad{" "}
+                  <span className="arrow">→</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="link-quiet"
+                  style={{ fontSize: "15px" }}
+                >
+                  Sobre el estudio <span className="arrow">→</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

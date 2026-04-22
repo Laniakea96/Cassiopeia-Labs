@@ -1,64 +1,90 @@
 import type { Metadata } from "next";
-import Container from "@/components/ui/Container";
-import AnimatedSection from "@/components/ui/AnimatedSection";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Learn about Cassiopeia Labs, an independent app development studio.",
+  title: "Estudio",
+  description: "Estudio independiente de apps móviles.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="py-24">
-      <Container>
-        <AnimatedSection>
-          <div className="max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-8">
-              About{" "}
-              <span className="bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent">
-                Cassiopeia Labs
-              </span>
-            </h1>
+    <>
+      <section className="hero compact wrap">
+        <div className="hero-inner stagger">
+          <span className="eyebrow">
+            <span className="dot" />
+            Estudio
+          </span>
+          <h1 className="hero-title">
+            Pequeño por <span className="serif">elección.</span>
+          </h1>
+          <p className="hero-sub">
+            Un estudio independiente con sede en{" "}
+            <span className="accent-amber">España</span>. Producto{" "}
+            <span className="accent-purple">pequeño</span>,{" "}
+            <span className="accent-orange">cuidado</span> y con{" "}
+            <span className="accent-yellow">voz propia</span>.
+          </p>
+        </div>
+      </section>
 
-            <div className="space-y-6 text-lg text-muted leading-relaxed">
-              <p>
-                Cassiopeia Labs is an independent app development studio. I
-                design and build applications from the ground up &mdash; from
-                initial concept to final release on the App Store and Play
-                Store.
-              </p>
+      <section className="block wrap">
+        <div className="estudio-grid reveal">
+          <div className="prose">
+            <p className="lead">
+              Estudio independiente con sede en España, especializado en apps
+              móviles con carácter propio.
+            </p>
+            <p>
+              <strong>Cassiopeia Labs</strong> es una marca registrada en la
+              Oficina Española de Patentes y Marcas (OEPM), Clase 9. Publicamos
+              directamente en App Store y Google Play, sin agencias, sin
+              intermediarios.
+            </p>
+            <p>
+              Creemos en producto pequeño: menos pantallas, más cuidado en las
+              que importan. Publicamos cuando está listo, lo mantenemos
+              mientras tenga sentido, y escribimos el código, el copy y las
+              políticas nosotros mismos.
+            </p>
+            <p>
+              Si tienes una idea y quieres construirla con nosotros —o si
+              simplemente te gusta cómo hacemos las cosas—{" "}
+              <Link
+                href="/contact"
+                style={{
+                  color: "var(--fg)",
+                  borderBottom: "1px solid var(--line-strong)",
+                }}
+              >
+                escríbenos
+              </Link>
+              .
+            </p>
+          </div>
 
-              <p>
-                Every app I create is built with attention to detail, clean
-                design, and a focus on solving real problems. I believe in
-                quality over quantity &mdash; each project gets the time and care
-                it deserves.
-              </p>
-
-              <h2 className="text-2xl font-bold text-foreground pt-6">
-                Tech Stack
-              </h2>
-              <p>
-                I primarily work with Flutter for cross-platform mobile
-                development, combined with modern backend technologies. This
-                allows me to ship polished apps on both iOS and Android from a
-                single codebase.
-              </p>
-
-              <h2 className="text-2xl font-bold text-foreground pt-6">
-                Philosophy
-              </h2>
-              <p>
-                I believe the best apps are the ones that respect their
-                users &mdash; with clean interfaces, honest business models, and
-                genuine utility. No dark patterns, no bloat, just thoughtful
-                software.
-              </p>
+          <div className="stats">
+            <div className="stat">
+              <div className="k">3</div>
+              <div className="lbl">Apps publicadas</div>
+            </div>
+            <div className="stat">
+              <div className="k">Flutter</div>
+              <div className="lbl">iOS · Android</div>
+            </div>
+            <div className="stat">
+              <div className="k">
+                <span className="serif">ES</span>
+              </div>
+              <div className="lbl">Sede · España</div>
+            </div>
+            <div className="stat">
+              <div className="k">®</div>
+              <div className="lbl">OEPM · Clase 9</div>
             </div>
           </div>
-        </AnimatedSection>
-      </Container>
-    </div>
+        </div>
+      </section>
+    </>
   );
 }
