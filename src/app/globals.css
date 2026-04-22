@@ -926,12 +926,8 @@ section.block {
   position: relative;
   padding: 32px;
   border-radius: var(--r-card);
-  background: linear-gradient(
-    180deg,
-    rgba(4, 4, 6, 0.72),
-    rgba(4, 4, 6, 0.58)
-  );
-  backdrop-filter: blur(18px) saturate(1.1);
+  background: transparent;
+  backdrop-filter: blur(24px) saturate(1.4);
   border: 1px solid var(--line);
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
     border-color 0.3s ease, background 0.3s ease;
@@ -961,11 +957,6 @@ section.block {
 }
 .card:hover {
   transform: translateY(-4px);
-  background: linear-gradient(
-    180deg,
-    rgba(4, 4, 6, 0.82),
-    rgba(4, 4, 6, 0.68)
-  );
 }
 .card:hover::before {
   opacity: 1;
@@ -1184,12 +1175,8 @@ section.block {
   scroll-margin-top: 100px;
   padding: 40px;
   border-radius: var(--r-card);
-  background: linear-gradient(
-    180deg,
-    rgba(4, 4, 6, 0.72),
-    rgba(4, 4, 6, 0.58)
-  );
-  backdrop-filter: blur(18px) saturate(1.1);
+  background: transparent;
+  backdrop-filter: blur(24px) saturate(1.4);
   border: 1px solid var(--line);
 }
 .privacy-head {
