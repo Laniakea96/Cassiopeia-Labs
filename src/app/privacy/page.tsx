@@ -60,10 +60,6 @@ export default function PrivacyPage() {
     <>
       <section className="hero compact wrap">
         <div className="hero-inner stagger">
-          <span className="eyebrow">
-            <span className="dot" />
-            Legal
-          </span>
           <h1 className="hero-title">
             Privacidad, <span className="serif">clara.</span>
           </h1>

@@ -11,10 +11,6 @@ export default function AboutPage() {
     <>
       <section className="hero compact wrap">
         <div className="hero-inner stagger">
-          <span className="eyebrow">
-            <span className="dot" />
-            Estudio
-          </span>
           <h1 className="hero-title">
             Pequeño por <span className="serif">elección.</span>
           </h1>

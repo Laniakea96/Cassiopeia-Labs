@@ -13,10 +13,6 @@ export default function ContactPage() {
     <>
       <section className="hero compact wrap">
         <div className="hero-inner stagger">
-          <span className="eyebrow">
-            <span className="dot" />
-            Disponible para colaborar
-          </span>
           <h1 className="hero-title">
             Hablemos, <span className="serif">sin prisa.</span>
           </h1>
