@@ -440,7 +440,7 @@ img.stars.s-c {
 .hero-brand-text .hb-main {
   position: relative;
   display: inline-block;
-  background-color: #0a84ff;
+  background-color: #2e4bff;
   background-image: radial-gradient(
       ellipse 60% 80% at 20% 30%,
       #ffffff 0%,
@@ -448,23 +448,24 @@ img.stars.s-c {
     ),
     radial-gradient(
       ellipse 50% 70% at 75% 65%,
-      #e6f2ff 0%,
-      rgba(230, 242, 255, 0) 50%
+      #ff5c8a 0%,
+      rgba(255, 92, 138, 0) 55%
     ),
     radial-gradient(
       ellipse 40% 60% at 55% 20%,
-      #ffffff 0%,
-      rgba(255, 255, 255, 0) 45%
+      #e8f0ff 0%,
+      rgba(232, 240, 255, 0) 45%
     ),
     linear-gradient(
       110deg,
-      #0a84ff 0%,
-      #64d2ff 25%,
-      #ffffff 50%,
-      #5ac8fa 75%,
-      #0a84ff 100%
+      #2e4bff 0%,
+      #5fb8ff 25%,
+      #e8f0ff 45%,
+      #ff5c8a 65%,
+      #5fb8ff 85%,
+      #2e4bff 100%
     );
-  background-size: 220% 220%, 260% 240%, 200% 200%, 260% 100%;
+  background-size: 220% 220%, 260% 240%, 200% 200%, 320% 100%;
   background-position: 0% 50%, 100% 50%, 50% 0%, 0% 50%;
   -webkit-background-clip: text;
   background-clip: text;
