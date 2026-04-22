@@ -112,9 +112,9 @@ export default function SiteEffects() {
       const defs = document.createElementNS(ns, "defs");
       defs.innerHTML =
         '<linearGradient id="con-stroke" x1="0" y1="0" x2="1" y2="1">' +
-        '<stop offset="0%" stop-color="#bf5af2" stop-opacity="0.7"/>' +
-        '<stop offset="50%" stop-color="#ff9f0a" stop-opacity="0.55"/>' +
-        '<stop offset="100%" stop-color="#ffd60a" stop-opacity="0.7"/>' +
+        '<stop offset="0%" stop-color="#2e4bff" stop-opacity="0.7"/>' +
+        '<stop offset="50%" stop-color="#5fb8ff" stop-opacity="0.6"/>' +
+        '<stop offset="100%" stop-color="#ff5c8a" stop-opacity="0.7"/>' +
         "</linearGradient>";
       svg.appendChild(defs);
 

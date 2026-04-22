@@ -324,7 +324,7 @@ img.stars.s-c {
   right: 0;
   bottom: -4px;
   height: 1px;
-  background: linear-gradient(90deg, #ff9f0a, #ff6b00, #bf5af2, #8e3fd4);
+  background: linear-gradient(90deg, #2e4bff, #5fb8ff, #e8f0ff, #ff5c8a);
 }
 @media (max-width: 640px) {
   .nav-links {
@@ -357,31 +357,31 @@ img.stars.s-c {
 }
 
 .accent-amber {
-  color: #ff9f0a;
+  color: #e8f0ff;
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
 }
 .accent-orange {
-  color: #ff6b00;
+  color: #5fb8ff;
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
 }
 .accent-purple {
-  color: #bf5af2;
+  color: #2e4bff;
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
 }
 .accent-indigo {
-  color: #8e3fd4;
+  color: #2e4bff;
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
 }
 .accent-yellow {
-  color: #ffd60a;
+  color: #ff5c8a;
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
@@ -591,13 +591,12 @@ h1 .serif,
   letter-spacing: -0.01em;
   background: linear-gradient(
     100deg,
-    #ff9f0a 0%,
-    #ffd60a 15%,
-    #ff6b00 35%,
-    #bf5af2 55%,
-    #8e3fd4 75%,
-    #ff6b00 90%,
-    #ff9f0a 100%
+    #2e4bff 0%,
+    #5fb8ff 20%,
+    #e8f0ff 40%,
+    #ff5c8a 60%,
+    #5fb8ff 80%,
+    #2e4bff 100%
   );
   background-size: 240% 100%;
   background-position: 0% 50%;
@@ -610,13 +609,12 @@ h1 .serif,
 .section-title .serif {
   background: linear-gradient(
     100deg,
-    #8e3fd4 0%,
-    #bf5af2 20%,
-    #ff6b00 45%,
-    #ffd60a 60%,
-    #ff6b00 75%,
-    #bf5af2 90%,
-    #8e3fd4 100%
+    #ff5c8a 0%,
+    #2e4bff 25%,
+    #5fb8ff 50%,
+    #e8f0ff 65%,
+    #5fb8ff 80%,
+    #ff5c8a 100%
   );
   background-size: 250% 100%;
   background-position: 0% 50%;
@@ -677,22 +675,21 @@ h1 .serif,
   background: #fff;
 }
 
-/* Gradient CTA: purple → yellow on hover (animated) */
+/* Gradient CTA: deep blue → pink on hover (animated) */
 .btn-gradient {
   color: #fff;
   font-weight: 600;
   background: linear-gradient(
     100deg,
-    #7a2fc9 0%,
-    #9a48dd 20%,
-    #b857ee 35%,
-    #ff6b00 60%,
-    #ff9f0a 80%,
-    #ffd60a 100%
+    #1a1a3e 0%,
+    #2e4bff 25%,
+    #5fb8ff 50%,
+    #e8f0ff 75%,
+    #ff5c8a 100%
   );
   background-size: 300% 100%;
   background-position: 0% 50%;
-  box-shadow: 0 8px 28px -10px rgba(142, 63, 212, 0.55),
+  box-shadow: 0 8px 28px -10px rgba(46, 75, 255, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
     inset 0 -1px 0 rgba(0, 0, 0, 0.18);
   transition: background-position 0.9s cubic-bezier(0.4, 0, 0.2, 1),
@@ -700,11 +697,11 @@ h1 .serif,
     transform 0.3s ease;
 }
 .btn-gradient:hover {
-  color: #2a1300;
+  color: #1a1a3e;
   background-position: 100% 50%;
-  box-shadow: 0 10px 32px -10px rgba(255, 159, 10, 0.65),
+  box-shadow: 0 10px 32px -10px rgba(255, 92, 138, 0.65),
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(180, 90, 0, 0.2);
+    inset 0 -1px 0 rgba(255, 92, 138, 0.25);
 }
 .btn-gradient > * {
   position: relative;
@@ -867,7 +864,7 @@ section.block {
   stroke-linecap: round;
   stroke-dasharray: 3 6;
   opacity: 0;
-  filter: drop-shadow(0 0 4px rgba(191, 90, 242, 0.4));
+  filter: drop-shadow(0 0 4px rgba(95, 184, 255, 0.45));
   animation: con-fade-in 1.4s ease 0.4s forwards,
     con-drift 16s linear infinite;
 }
@@ -878,7 +875,7 @@ section.block {
     con-twinkle 3.5s ease-in-out infinite;
   transform-box: fill-box;
   transform-origin: center;
-  filter: drop-shadow(0 0 6px rgba(255, 214, 10, 0.55));
+  filter: drop-shadow(0 0 6px rgba(232, 240, 255, 0.65));
 }
 .constellation .con-star:nth-child(2) {
   animation-delay: 0.3s, 1.1s;
