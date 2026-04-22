@@ -8,9 +8,9 @@ export default function HeroSection() {
         <span className="hero-brand-text">
           <span className="hb-main">
             Cass
-            <span className="i-star">i</span>
+            <span className="i-star">ı</span>
             ope
-            <span className="i-star">i</span>
+            <span className="i-star">ı</span>
             a
           </span>
           <span className="hb-labs">Labs</span>

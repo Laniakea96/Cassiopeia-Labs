@@ -557,7 +557,8 @@ img.stars.s-c {
       #5fb8ff 85%,
       #2e4bff 100%
     );
-  background-size: 220% 220%, 260% 240%, 200% 200%, 320% 100%;
+  background-attachment: fixed;
+  background-size: 140vw 140vh, 180vw 160vh, 120vw 120vh, 220vw 100vh;
   background-position: 0% 50%, 100% 50%, 50% 0%, 0% 50%;
   -webkit-background-clip: text;
   background-clip: text;
