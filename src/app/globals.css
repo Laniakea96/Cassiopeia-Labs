@@ -1303,7 +1303,7 @@ section.block {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  align-items: start;
+  align-items: stretch;
 }
 @media (max-width: 820px) {
   .contact-grid {
@@ -1314,8 +1314,16 @@ section.block {
 .contact-card {
   padding: 40px;
   border-radius: var(--r-card);
-  background: rgba(255, 255, 255, 0.03);
+  background: linear-gradient(
+    180deg,
+    rgba(4, 4, 6, 0.88),
+    rgba(4, 4, 6, 0.78)
+  );
+  backdrop-filter: blur(24px) saturate(1.1);
   border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .contact-card h3 {
   margin: 0 0 14px;
