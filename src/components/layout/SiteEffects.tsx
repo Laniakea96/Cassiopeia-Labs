@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function SiteEffects() {
+  const pathname = usePathname();
   useEffect(() => {
     const nav = document.getElementById("nav");
 
@@ -161,7 +163,7 @@ export default function SiteEffects() {
         btn.removeEventListener("pointerleave", onMove as EventListener);
       });
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
