@@ -25,7 +25,7 @@
 
   --nav-h: 56px;
   --max: 1180px;
-  --pad: 24px;
+  --pad: clamp(32px, 8vw, 48px);
 }
 
 * {
@@ -390,7 +390,7 @@ img.stars.s-c {
 /* Hero */
 .hero {
   position: relative;
-  padding: clamp(80px, 14vh, 160px) 0 clamp(80px, 12vh, 140px);
+  padding: clamp(80px, 14vh, 160px) var(--pad) clamp(80px, 12vh, 140px);
   min-height: calc(100vh - var(--nav-h));
   display: flex;
   flex-direction: column;
@@ -399,7 +399,7 @@ img.stars.s-c {
 }
 .hero.compact {
   min-height: auto;
-  padding: clamp(64px, 10vh, 120px) 0 clamp(32px, 6vh, 64px);
+  padding: clamp(64px, 10vh, 120px) var(--pad) clamp(32px, 6vh, 64px);
 }
 .hero-inner {
   width: 100%;
