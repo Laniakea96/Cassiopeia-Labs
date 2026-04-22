@@ -6,7 +6,11 @@ export default function HeroSection() {
       <div className="hero-brand" id="heroBrand" aria-hidden="true">
         <span className="hero-brand-logo" />
         <span className="hero-brand-text">
-          <span className="hb-main">Cassiopeia</span>
+          <span className="hb-main">
+            Cass
+            <span className="i-star">ı</span>
+            opeia
+          </span>
           <span className="hb-labs">Labs</span>
         </span>
       </div>
@@ -45,7 +49,17 @@ export default function HeroSection() {
 
       <div className="scroll-hint" aria-hidden="true">
         <div className="bar" />
-        Scroll
+        <svg
+          className="chev"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
       </div>
     </section>
   );

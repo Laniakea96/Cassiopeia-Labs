@@ -40,7 +40,11 @@ export default function Navbar() {
         <div className="nav-inner">
           <Link href="/" className="brand" aria-label="Cassiopeia Labs inicio">
             <span className="star" aria-hidden="true" />
-            <span>Cassiopeia</span>
+            <span>
+              Cass
+              <span className="i-star">ı</span>
+              opeia
+            </span>
             <span className="labs">Labs</span>
           </Link>
 

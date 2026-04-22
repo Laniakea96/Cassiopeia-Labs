@@ -8,7 +8,11 @@ export default function Footer() {
           <div className="foot-col foot-brand">
             <Link href="/" className="brand">
               <span className="star" aria-hidden="true" />
-              <span>Cassiopeia</span>
+              <span>
+                Cass
+                <span className="i-star">ı</span>
+                opeia
+              </span>
               <span className="labs">Labs</span>
             </Link>
             <Link href="/contact" className="btn btn-ghost">

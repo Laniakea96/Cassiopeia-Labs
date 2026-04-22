@@ -33,7 +33,7 @@ const apps: AppItem[] = [
     iconSrc: "/images/luupy-icon.png",
     tagline: "Hábitos · Rutinas · Diario",
     description:
-      "[Categoría por definir — hábitos / productividad]. Un bucle amable para volver a lo importante cada día, con notificaciones que no gritan.",
+      "Finanzas. Un bucle amable para volver a lo importante cada día, con notificaciones que no gritan.",
   },
   {
     slug: "mimoney",
