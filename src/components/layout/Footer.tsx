@@ -10,8 +10,10 @@ export default function Footer() {
               <span className="star" aria-hidden="true" />
               <span>
                 Cass
-                <span className="i-star">ı</span>
-                opeia
+                <span className="i-star">i</span>
+                ope
+                <span className="i-star">i</span>
+                a
               </span>
               <span className="labs">Labs</span>
             </Link>

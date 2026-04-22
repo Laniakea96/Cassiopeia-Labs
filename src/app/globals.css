@@ -250,23 +250,20 @@ img.stars.s-c {
 }
 .i-star {
   position: relative;
-  display: inline;
-  color: #e8f0ff;
-  -webkit-text-fill-color: #e8f0ff;
 }
 .i-star::after {
   content: "✦";
   position: absolute;
-  top: -0.4em;
+  top: -0.1em;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.45em;
+  font-size: 0.4em;
   line-height: 1;
   color: #e8f0ff;
   -webkit-text-fill-color: #e8f0ff;
   background: none;
   pointer-events: none;
-  text-shadow: 0 0 6px rgba(232, 240, 255, 0.7);
+  text-shadow: 0 0 6px rgba(232, 240, 255, 0.9);
   white-space: nowrap;
 }
 .brand .labs {
@@ -533,9 +530,8 @@ img.stars.s-c {
   color: var(--fg);
   position: relative;
 }
-.hero-brand-text .hb-main {
-  position: relative;
-  display: inline-block;
+.hero-brand-text .hb-main,
+.hero-brand-text .hb-main .i-star {
   background-color: #2e4bff;
   background-image: radial-gradient(
       ellipse 60% 80% at 20% 30%,
@@ -566,7 +562,12 @@ img.stars.s-c {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: hb-drift 18s ease-in-out infinite;
+}
+.hero-brand-text .hb-main {
+  position: relative;
+  display: inline-block;
 }
 @keyframes hb-drift {
   0% {
