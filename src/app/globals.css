@@ -1182,25 +1182,6 @@ section.block {
 }
 
 /* Privacidad */
-.privacy-section {
-  background: var(--bg-privacy);
-}
-.privacy-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      circle at 15% 0%,
-      rgba(255, 159, 10, 0.1),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 85% 100%,
-      rgba(191, 90, 242, 0.1),
-      transparent 55%
-    );
-  pointer-events: none;
-}
 .privacy-stack {
   display: grid;
   gap: 20px;
