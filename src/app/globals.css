@@ -326,13 +326,66 @@ img.stars.s-c {
   height: 1px;
   background: linear-gradient(90deg, #2e4bff, #5fb8ff, #e8f0ff, #ff5c8a);
 }
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg);
+  background: transparent;
+  transition: background 0.2s ease, transform 0.25s ease;
+}
+.nav-toggle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s ease;
+}
+.nav.menu-open .nav-toggle svg {
+  transform: rotate(180deg);
+}
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px var(--pad);
+  position: absolute;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: saturate(160%) blur(24px);
+}
+.nav-mobile a {
+  padding: 12px 6px;
+  font-size: 15px;
+  color: var(--dim);
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-mobile a:hover {
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.04);
+}
+.nav-mobile a.active {
+  color: var(--fg);
+}
+.nav.menu-open .nav-mobile {
+  display: flex;
+}
+
 @media (max-width: 640px) {
   .nav-links {
-    gap: 16px;
-    font-size: 13px;
-  }
-  .nav-links a.hide-sm {
     display: none;
+  }
+  .nav-toggle {
+    display: inline-flex;
   }
 }
 
