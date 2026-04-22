@@ -802,7 +802,7 @@ h1 .serif,
 
 /* Section */
 section.block {
-  padding: clamp(64px, 10vh, 120px) 0;
+  padding: clamp(64px, 10vh, 120px) var(--pad);
   position: relative;
 }
 .section-head {
