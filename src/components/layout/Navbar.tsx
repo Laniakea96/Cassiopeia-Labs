@@ -32,53 +32,55 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header
-      className={`nav${onHome ? " brand-dock" : ""}${open ? " menu-open" : ""}`}
-      id="nav"
-    >
-      <div className="nav-inner">
-        <Link href="/" className="brand" aria-label="Cassiopeia Labs inicio">
-          <span className="star" aria-hidden="true" />
-          <span>Cassiopeia</span>
-          <span className="labs">Labs</span>
-        </Link>
+    <>
+      <header
+        className={`nav${onHome ? " brand-dock" : ""}${open ? " menu-open" : ""}`}
+        id="nav"
+      >
+        <div className="nav-inner">
+          <Link href="/" className="brand" aria-label="Cassiopeia Labs inicio">
+            <span className="star" aria-hidden="true" />
+            <span>Cassiopeia</span>
+            <span className="labs">Labs</span>
+          </Link>
 
-        <nav className="nav-links" aria-label="Principal">
-          {links.map((link) => {
-            const active = pathname.startsWith(link.href);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={active ? "active" : ""}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+          <nav className="nav-links" aria-label="Principal">
+            {links.map((link) => {
+              const active = pathname.startsWith(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={active ? "active" : ""}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        <button
-          type="button"
-          className="nav-toggle"
-          aria-expanded={open}
-          aria-controls="nav-mobile"
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-expanded={open}
+            aria-controls="nav-mobile"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            onClick={() => setOpen((v) => !v)}
           >
-            <path d="M6 9l6 6 6-6" />
-          </svg>
-        </button>
-      </div>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </header>
 
       <nav
         id="nav-mobile"
@@ -99,6 +101,6 @@ export default function Navbar() {
           );
         })}
       </nav>
-    </header>
+    </>
   );
 }

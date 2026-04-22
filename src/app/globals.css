@@ -353,14 +353,18 @@ img.stars.s-c {
   display: none;
   flex-direction: column;
   gap: 4px;
-  padding: 12px var(--pad);
-  position: absolute;
+  padding: 12px var(--pad) 16px;
+  position: fixed;
   top: var(--nav-h);
   left: 0;
   right: 0;
+  z-index: 49;
   border-top: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: saturate(160%) blur(24px);
+  background: transparent;
+  backdrop-filter: blur(40px) saturate(1.6);
+}
+.nav.menu-open ~ .nav-mobile {
+  display: flex;
 }
 .nav-mobile a {
   padding: 12px 6px;
@@ -375,9 +379,6 @@ img.stars.s-c {
 }
 .nav-mobile a.active {
   color: var(--fg);
-}
-.nav.menu-open .nav-mobile {
-  display: flex;
 }
 
 @media (max-width: 640px) {
