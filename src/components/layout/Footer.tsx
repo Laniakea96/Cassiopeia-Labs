@@ -53,11 +53,29 @@ export default function Footer() {
             <ul>
               <li>
                 <a
+                  href="https://wa.me/34655153092?text=Hola%20Samuel%2C%20te%20escribo%20desde%20tu%20web%20por%20una%20oportunidad%20de%20colaboraci%C3%B3n."
+                  target="_blank"
+                  rel="noopener"
+                >
+                  WhatsApp ↗
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/samuelparreno/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  LinkedIn ↗
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://github.com/Laniakea96"
                   target="_blank"
                   rel="noopener"
                 >
-                  GitHub · Laniakea96 ↗
+                  GitHub ↗
                 </a>
               </li>
               <li>

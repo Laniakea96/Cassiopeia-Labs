@@ -26,16 +26,15 @@ export default function AboutPage() {
 
       <section className="block wrap">
         <div className="estudio-grid reveal">
-          <div className="prose">
+          <article className="estudio-card prose">
             <p className="lead">
               Estudio independiente con sede en España, especializado en apps
               móviles con carácter propio.
             </p>
             <p>
-              <strong>Cassiopeia Labs</strong> es una marca registrada en la
-              Oficina Española de Patentes y Marcas (OEPM), Clase 9. Publicamos
-              directamente en App Store y Google Play, sin agencias, sin
-              intermediarios.
+              <strong>Cassiopeia Labs</strong> es la marca personal bajo la que
+              publicamos. Publicamos directamente en App Store y Google Play,
+              sin agencias y sin intermediarios.
             </p>
             <p>
               Creemos en producto pequeño: menos pantallas, más cuidado en las
@@ -57,7 +56,7 @@ export default function AboutPage() {
               </Link>
               .
             </p>
-          </div>
+          </article>
 
           <div className="stats">
             <div className="stat">

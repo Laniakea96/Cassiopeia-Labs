@@ -36,12 +36,12 @@ export default async function AppPage({
     <>
       {app.features && app.features.length > 0 && (
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 16,
-            marginBottom: 40,
-          }}
+          className="app-features-grid"
+          style={
+            {
+              "--features-count": app.features.length,
+            } as React.CSSProperties
+          }
         >
           {app.features.map((feature) => (
             <article key={feature.title} className="privacy-card">

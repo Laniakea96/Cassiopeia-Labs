@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Políticas de privacidad de Piripi, Luupy y Mimoney.",
 };
 
-const CONTACT_EMAIL = "samuparre96@gmail.com";
+const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
 export default function PrivacyPage() {
   const apps = getAllApps().filter((app) => app.privacyShort);
@@ -35,7 +35,11 @@ export default function PrivacyPage() {
           <div className="privacy-stack">
             {apps.map((app) => {
               const p = app.privacyShort!;
-              const contactParts = p.contact.split(CONTACT_EMAIL);
+              const emailMatch = p.contact.match(EMAIL_REGEX);
+              const email = emailMatch?.[0] ?? "";
+              const contactParts = email
+                ? p.contact.split(email)
+                : [p.contact, ""];
               return (
                 <article
                   key={app.slug}
@@ -78,15 +82,17 @@ export default function PrivacyPage() {
                       <h4>Contacto</h4>
                       <p>
                         {contactParts[0]}
-                        <a
-                          href={`mailto:${CONTACT_EMAIL}`}
-                          style={{
-                            color: "var(--fg)",
-                            borderBottom: "1px solid var(--line-strong)",
-                          }}
-                        >
-                          {CONTACT_EMAIL}
-                        </a>
+                        {email && (
+                          <a
+                            href={`mailto:${email}`}
+                            style={{
+                              color: "var(--fg)",
+                              borderBottom: "1px solid var(--line-strong)",
+                            }}
+                          >
+                            {email}
+                          </a>
+                        )}
                         {contactParts[1] ?? ""}
                       </p>
                     </div>

@@ -25,12 +25,26 @@ export default function FeaturedApps() {
                   En obras
                 </span>
               )}
-              <div
-                className={`app-icon ${app.iconClass}`}
-                aria-hidden="true"
+              <Link
+                href={`/apps/${app.slug}`}
+                className="app-icon-burst-wrap"
+                aria-label={`Saber más de ${app.name}`}
               >
-                <img src={app.iconSrc} alt="" />
-              </div>
+                <span className="hire-star hire-star-0" aria-hidden="true" />
+                <span className="hire-star hire-star-1" aria-hidden="true" />
+                <span className="hire-star hire-star-2" aria-hidden="true" />
+                <span className="hire-star hire-star-3" aria-hidden="true" />
+                <span className="hire-star hire-star-4" aria-hidden="true" />
+                <span className="hire-star hire-star-5" aria-hidden="true" />
+                <span className="hire-star hire-star-6" aria-hidden="true" />
+                <span className="hire-star hire-star-7" aria-hidden="true" />
+                <div
+                  className={`app-icon ${app.iconClass}`}
+                  aria-hidden="true"
+                >
+                  <img src={app.iconSrc} alt="" />
+                </div>
+              </Link>
               <h3 className="card-name">{app.name}</h3>
               <p className="card-tagline">{app.tagline}</p>
               <p className="card-desc">{app.description}</p>

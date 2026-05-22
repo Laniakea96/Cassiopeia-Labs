@@ -30,12 +30,15 @@ export interface AppData {
   iconSrc: string;
   initial: string;
   color?: string;
+  accentFrom?: string;
+  accentTo?: string;
   category: string;
   platforms: AppPlatform[];
   links: {
     appStore?: string;
     playStore?: string;
     web?: string;
+    instagram?: string;
   };
   screenshots: string[];
   features?: AppFeature[];

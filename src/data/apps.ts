@@ -12,11 +12,16 @@ export const apps: AppData[] = [
     iconClass: "icon-luupy",
     iconSrc: "/images/luupy-icon.png",
     initial: "L",
+    accentFrom: "#f4a06a",
+    accentTo: "#bf5af2",
     category: "Gestor de suscripciones",
     platforms: ["ios"],
     links: {
       appStore:
         "https://apps.apple.com/es/app/luupy-controla-tus-gastos/id6762055476",
+      playStore:
+        "https://play.google.com/store/apps/details?id=com.cassiopeialabs.luupy",
+      instagram: "https://www.instagram.com/luupy.app/",
     },
     screenshots: [],
     features: [
@@ -42,8 +47,8 @@ export const apps: AppData[] = [
       },
     ],
     responsibleParty: {
-      name: "Samuel Parreno Martinez",
-      email: "samuparre96@gmail.com",
+      name: "Samuel Parreño Martinez",
+      email: "luupyapp@outlook.com",
       country: "España",
     },
     privacyShort: {
@@ -52,7 +57,7 @@ export const apps: AppData[] = [
         "Almacenamiento en la nube mediante Firebase (Google Cloud) para sincronizar entre tus dispositivos.",
       auth: "Inicio de sesión con Firebase Authentication (email o proveedores soportados). Las credenciales no se almacenan en nuestros servidores.",
       contact:
-        "Para ejercer tus derechos GDPR o cualquier duda, escríbenos a samuparre96@gmail.com.",
+        "Para ejercer tus derechos GDPR o cualquier duda, escríbenos a luupyapp@outlook.com.",
     },
     lastUpdated: "22 de abril de 2026",
     featured: true,
@@ -63,13 +68,13 @@ export const apps: AppData[] = [
   {
     slug: "piripi",
     name: "Piripi",
-    tagline: "Fiesta · 18–30 · ES / Latam",
+    tagline: "Diviértete con tus amigos",
     description:
       "Juegos rápidos para romper el hielo en cualquier fiesta. Retos, rondas y categorías pensadas para grupos reales, sin descargas pesadas ni fricción.",
     iconClass: "icon-piripi",
     iconSrc: "/images/piripi-icon.png",
     initial: "P",
-    category: "Fiesta",
+    category: "Diviértete con tus amigos",
     platforms: ["ios"],
     links: {},
     screenshots: [],
