@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { getApp, getAllApps } from "@/data/apps";
 import { getAppContent } from "@/lib/mdx";
-import { siteConfig } from "@/data/siteConfig";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -17,10 +16,12 @@ export async function generateMetadata({
   const app = getApp(slug);
   if (!app) return {};
   return {
-    title: `${app.name} - Support`,
-    description: `Support page for ${app.name}`,
+    title: `${app.name} — Soporte`,
+    description: `Soporte y contacto para ${app.name}.`,
   };
 }
+
+const SUPPORT_EMAIL = "samuparre96@gmail.com";
 
 export default async function SupportPage({
   params,
@@ -34,18 +35,37 @@ export default async function SupportPage({
   const content = await getAppContent(slug, "support");
 
   return (
-    <div className="prose prose-lg max-w-none">
-      {content ? (
-        content.content
-      ) : (
-        <div>
-          <h2>Support</h2>
-          <p>
-            Need help with {app.name}? Contact us at{" "}
-            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
-          </p>
+    <article className="privacy-card">
+      <div className="privacy-head">
+        <div className="privacy-head-l">
+          <div className={`mini-icon ${app.iconClass}`} aria-hidden="true">
+            <img src={app.iconSrc} alt="" />
+          </div>
+          <h3>
+            {app.name}{" "}
+            <span style={{ fontWeight: 400, color: "var(--dim)" }}>— Soporte</span>
+          </h3>
         </div>
-      )}
-    </div>
+      </div>
+      <div className="prose">
+        {content ? (
+          content.content
+        ) : (
+          <p>
+            ¿Necesitas ayuda con {app.name}? Escríbenos a{" "}
+            <a
+              href={`mailto:${SUPPORT_EMAIL}`}
+              style={{
+                color: "var(--fg)",
+                borderBottom: "1px solid var(--line-strong)",
+              }}
+            >
+              {SUPPORT_EMAIL}
+            </a>
+            .
+          </p>
+        )}
+      </div>
+    </article>
   );
 }

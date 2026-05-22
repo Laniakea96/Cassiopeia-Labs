@@ -1,17 +1,47 @@
+export type AppPlatform = "ios" | "android" | "web" | "macos";
+
+export type AppStatus = "live" | "wip" | "soon";
+
+export interface AppFeature {
+  title: string;
+  description: string;
+}
+
+export interface AppResponsibleParty {
+  name: string;
+  email: string;
+  country: string;
+}
+
+export interface AppPrivacyShort {
+  data: string;
+  storage: string;
+  auth: string;
+  contact: string;
+}
+
 export interface AppData {
   slug: string;
   name: string;
   tagline: string;
   description: string;
-  icon: string;
-  color: string;
-  platforms: ("ios" | "android" | "web" | "macos")[];
+  longDescription?: string;
+  iconClass: string;
+  iconSrc: string;
+  initial: string;
+  color?: string;
+  category: string;
+  platforms: AppPlatform[];
   links: {
     appStore?: string;
     playStore?: string;
     web?: string;
   };
   screenshots: string[];
+  features?: AppFeature[];
+  responsibleParty?: AppResponsibleParty;
+  privacyShort?: AppPrivacyShort;
+  lastUpdated: string;
   featured: boolean;
-  category: string;
+  status: AppStatus;
 }

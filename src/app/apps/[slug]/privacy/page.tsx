@@ -16,8 +16,8 @@ export async function generateMetadata({
   const app = getApp(slug);
   if (!app) return {};
   return {
-    title: `${app.name} - Privacy Policy`,
-    description: `Privacy policy for ${app.name}`,
+    title: `${app.name} — Privacidad`,
+    description: `Política de privacidad de ${app.name}.`,
   };
 }
 
@@ -33,15 +33,28 @@ export default async function PrivacyPage({
   const content = await getAppContent(slug, "privacy");
 
   return (
-    <div className="prose prose-lg max-w-none">
-      {content ? (
-        content.content
-      ) : (
-        <div>
-          <h2>Privacy Policy</h2>
-          <p>Privacy policy for {app.name} coming soon.</p>
+    <article className="privacy-card">
+      <div className="privacy-head">
+        <div className="privacy-head-l">
+          <div className={`mini-icon ${app.iconClass}`} aria-hidden="true">
+            <img src={app.iconSrc} alt="" />
+          </div>
+          <h3>
+            {app.name}{" "}
+            <span style={{ fontWeight: 400, color: "var(--dim)" }}>— Privacidad</span>
+          </h3>
         </div>
-      )}
-    </div>
+        <div className="privacy-date">
+          Actualizado <span className="tag">{app.lastUpdated}</span>
+        </div>
+      </div>
+      <div className="prose">
+        {content ? (
+          content.content
+        ) : (
+          <p>Política de privacidad de {app.name} próximamente.</p>
+        )}
+      </div>
+    </article>
   );
 }

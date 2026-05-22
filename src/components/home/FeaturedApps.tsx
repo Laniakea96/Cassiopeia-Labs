@@ -1,45 +1,9 @@
 import Link from "next/link";
-
-type FeaturedApp = {
-  slug: string;
-  name: string;
-  iconClass: string;
-  iconSrc: string;
-  tagline: string;
-  description: string;
-};
-
-const apps: FeaturedApp[] = [
-  {
-    slug: "piripi",
-    name: "Piripi",
-    iconClass: "icon-piripi",
-    iconSrc: "/images/piripi-icon.png",
-    tagline: "Fiesta · 18–30 · ES / Latam",
-    description:
-      "Juegos rápidos para romper el hielo en cualquier fiesta. Retos, rondas y categorías pensadas para grupos reales.",
-  },
-  {
-    slug: "luupy",
-    name: "Luupy",
-    iconClass: "icon-luupy",
-    iconSrc: "/images/luupy-icon.png",
-    tagline: "Hábitos · Rutinas · Diario",
-    description:
-      "Finanzas. Un bucle amable para volver a lo importante cada día, con notificaciones que no gritan.",
-  },
-  {
-    slug: "mimoney",
-    name: "Mimoney",
-    iconClass: "icon-mimoney",
-    iconSrc: "/images/mimoney-icon.png",
-    tagline: "Finanzas personales",
-    description:
-      "Un lugar tranquilo para ver en qué se va tu dinero. Categorías simples, entradas rápidas, sin conectar cuentas.",
-  },
-];
+import { getFeaturedApps } from "@/data/apps";
 
 export default function FeaturedApps() {
+  const apps = getFeaturedApps();
+
   return (
     <section className="block wrap" aria-label="Apps destacadas">
       <div className="section-head reveal">
@@ -56,6 +20,11 @@ export default function FeaturedApps() {
         <div className="apps-grid">
           {apps.map((app) => (
             <article key={app.slug} className="card reveal" data-star>
+              {app.status === "wip" && (
+                <span className="card-ribbon" aria-label="En construcción">
+                  En obras
+                </span>
+              )}
               <div
                 className={`app-icon ${app.iconClass}`}
                 aria-hidden="true"
@@ -66,7 +35,7 @@ export default function FeaturedApps() {
               <p className="card-tagline">{app.tagline}</p>
               <p className="card-desc">{app.description}</p>
               <div className="card-actions">
-                <Link className="pill-sm" href={`/apps#${app.slug}`}>
+                <Link className="pill-sm" href={`/apps/${app.slug}`}>
                   Saber más
                   <svg
                     width="12"
@@ -82,7 +51,7 @@ export default function FeaturedApps() {
                 </Link>
                 <Link
                   className="link-quiet"
-                  href={`/privacy#privacy-${app.slug}`}
+                  href={`/apps/${app.slug}/privacy`}
                 >
                   Privacidad <span className="arrow">→</span>
                 </Link>

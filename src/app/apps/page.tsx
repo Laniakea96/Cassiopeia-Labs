@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getAllApps } from "@/data/apps";
 
 export const metadata: Metadata = {
   title: "Apps",
@@ -7,46 +8,9 @@ export const metadata: Metadata = {
     "Piripi, Luupy y Mimoney — apps móviles del estudio Cassiopeia Labs.",
 };
 
-type AppItem = {
-  slug: string;
-  name: string;
-  iconClass: string;
-  iconSrc: string;
-  tagline: string;
-  description: string;
-};
-
-const apps: AppItem[] = [
-  {
-    slug: "piripi",
-    name: "Piripi",
-    iconClass: "icon-piripi",
-    iconSrc: "/images/piripi-icon.png",
-    tagline: "Fiesta · 18–30 · ES / Latam",
-    description:
-      "Juegos rápidos para romper el hielo en cualquier fiesta. Retos, rondas y categorías pensadas para grupos reales, sin descargas pesadas ni fricción.",
-  },
-  {
-    slug: "luupy",
-    name: "Luupy",
-    iconClass: "icon-luupy",
-    iconSrc: "/images/luupy-icon.png",
-    tagline: "Hábitos · Rutinas · Diario",
-    description:
-      "Finanzas. Un bucle amable para volver a lo importante cada día, con notificaciones que no gritan.",
-  },
-  {
-    slug: "mimoney",
-    name: "Mimoney",
-    iconClass: "icon-mimoney",
-    iconSrc: "/images/mimoney-icon.png",
-    tagline: "Finanzas personales",
-    description:
-      "Un lugar tranquilo para ver en qué se va tu dinero. Categorías simples, entradas rápidas, sin conectar cuentas ni pedir permisos innecesarios.",
-  },
-];
-
 export default function AppsPage() {
+  const apps = getAllApps();
+
   return (
     <>
       <section className="hero compact wrap">
@@ -74,6 +38,11 @@ export default function AppsPage() {
                 id={app.slug}
                 data-star
               >
+                {app.status === "wip" && (
+                  <span className="card-ribbon" aria-label="En construcción">
+                    En obras
+                  </span>
+                )}
                 <div
                   className={`app-icon ${app.iconClass}`}
                   aria-hidden="true"
@@ -84,8 +53,8 @@ export default function AppsPage() {
                 <p className="card-tagline">{app.tagline}</p>
                 <p className="card-desc">{app.description}</p>
                 <div className="card-actions">
-                  <a className="pill-sm" href={`#${app.slug}`}>
-                    App Store
+                  <Link className="pill-sm" href={`/apps/${app.slug}`}>
+                    Saber más
                     <svg
                       width="12"
                       height="12"
@@ -95,12 +64,12 @@ export default function AppsPage() {
                       strokeWidth="2.5"
                       strokeLinecap="round"
                     >
-                      <path d="M7 17L17 7M8 7h9v9" />
+                      <path d="M5 12h14M13 5l7 7-7 7" />
                     </svg>
-                  </a>
+                  </Link>
                   <Link
                     className="link-quiet"
-                    href={`/privacy#privacy-${app.slug}`}
+                    href={`/apps/${app.slug}/privacy`}
                   >
                     Privacidad <span className="arrow">→</span>
                   </Link>

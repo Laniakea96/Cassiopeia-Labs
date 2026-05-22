@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Ponte en contacto con Cassiopeia Labs.",
 };
 
-const CONTACT_EMAIL = "hola@cassiopeialabs.com";
+const CONTACT_EMAIL = "samuparre96@gmail.com";
 
 export default function ContactPage() {
   return (

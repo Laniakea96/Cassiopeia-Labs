@@ -75,8 +75,8 @@ export default function AboutPage() {
               <div className="lbl">Sede · España</div>
             </div>
             <div className="stat">
-              <div className="k">®</div>
-              <div className="lbl">OEPM · Clase 9</div>
+              <div className="k">100%</div>
+              <div className="lbl">Indie · sin inversión</div>
             </div>
           </div>
         </div>

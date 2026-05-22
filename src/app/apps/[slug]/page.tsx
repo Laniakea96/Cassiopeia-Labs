@@ -16,7 +16,7 @@ export async function generateMetadata({
   const app = getApp(slug);
   if (!app) return {};
   return {
-    title: app.name,
+    title: `${app.name} — ${app.tagline}`,
     description: app.description,
   };
 }
@@ -33,12 +33,32 @@ export default async function AppPage({
   const content = await getAppContent(slug, "description");
 
   return (
-    <div className="prose prose-lg max-w-none">
-      {content ? (
-        content.content
-      ) : (
-        <p className="text-muted">{app.description}</p>
+    <>
+      {app.features && app.features.length > 0 && (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: 16,
+            marginBottom: 40,
+          }}
+        >
+          {app.features.map((feature) => (
+            <article key={feature.title} className="privacy-card">
+              <h4 style={{ marginTop: 0, marginBottom: 8 }}>{feature.title}</h4>
+              <p style={{ color: "var(--dim)", margin: 0, lineHeight: 1.6 }}>
+                {feature.description}
+              </p>
+            </article>
+          ))}
+        </div>
       )}
-    </div>
+
+      <article className="privacy-card">
+        <div className="prose prose-wide">
+          {content ? content.content : <p>{app.longDescription ?? app.description}</p>}
+        </div>
+      </article>
+    </>
   );
 }

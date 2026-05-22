@@ -37,13 +37,13 @@ export default function Footer() {
             <h5>Apps</h5>
             <ul>
               <li>
-                <Link href="/apps#piripi">Piripi</Link>
+                <Link href="/apps/luupy">Luupy</Link>
               </li>
               <li>
-                <Link href="/apps#luupy">Luupy</Link>
+                <Link href="/apps/piripi">Piripi</Link>
               </li>
               <li>
-                <Link href="/apps#mimoney">Mimoney</Link>
+                <Link href="/apps/mimoney">Mimoney</Link>
               </li>
             </ul>
           </div>
@@ -75,7 +75,6 @@ export default function Footer() {
             © <span suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}
             Cassiopeia Labs. Todos los derechos reservados.
           </div>
-          <div className="legal">Marca registrada · OEPM Clase 9</div>
         </div>
       </div>
     </footer>

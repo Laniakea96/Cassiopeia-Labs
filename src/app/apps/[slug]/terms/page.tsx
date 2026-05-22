@@ -16,8 +16,8 @@ export async function generateMetadata({
   const app = getApp(slug);
   if (!app) return {};
   return {
-    title: `${app.name} - Terms of Service`,
-    description: `Terms of service for ${app.name}`,
+    title: `${app.name} — Términos`,
+    description: `Términos y condiciones de uso de ${app.name}.`,
   };
 }
 
@@ -33,15 +33,28 @@ export default async function TermsPage({
   const content = await getAppContent(slug, "terms");
 
   return (
-    <div className="prose prose-lg max-w-none">
-      {content ? (
-        content.content
-      ) : (
-        <div>
-          <h2>Terms of Service</h2>
-          <p>Terms of service for {app.name} coming soon.</p>
+    <article className="privacy-card">
+      <div className="privacy-head">
+        <div className="privacy-head-l">
+          <div className={`mini-icon ${app.iconClass}`} aria-hidden="true">
+            <img src={app.iconSrc} alt="" />
+          </div>
+          <h3>
+            {app.name}{" "}
+            <span style={{ fontWeight: 400, color: "var(--dim)" }}>— Términos</span>
+          </h3>
         </div>
-      )}
-    </div>
+        <div className="privacy-date">
+          Actualizado <span className="tag">{app.lastUpdated}</span>
+        </div>
+      </div>
+      <div className="prose">
+        {content ? (
+          content.content
+        ) : (
+          <p>Términos y condiciones de {app.name} próximamente.</p>
+        )}
+      </div>
+    </article>
   );
 }
