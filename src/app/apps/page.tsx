@@ -19,9 +19,9 @@ export default function AppsPage() {
             Tres apps, <span className="serif">tres estrellas.</span>
           </h1>
           <p className="hero-sub">
-            Producto <span className="accent-purple">pequeño</span>,{" "}
-            <span className="accent-orange">cuidado</span> y con{" "}
-            <span className="accent-yellow">voz propia</span>. Disponibles en
+            Producto <span className="accent-blue">pequeño</span>,{" "}
+            <span className="accent-sky">cuidado</span> y con{" "}
+            <span className="accent-pink">voz propia</span>. Disponibles en
             App Store y Google Play.
           </p>
         </div>
@@ -41,6 +41,14 @@ export default function AppsPage() {
                 {app.status === "wip" && (
                   <span className="card-ribbon" aria-label="En construcción">
                     En obras
+                  </span>
+                )}
+                {app.status === "live" && (
+                  <span
+                    className="card-ribbon card-ribbon-live"
+                    aria-label="Disponible"
+                  >
+                    Disponible
                   </span>
                 )}
                 <Link

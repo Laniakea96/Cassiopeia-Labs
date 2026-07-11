@@ -71,6 +71,8 @@ export const apps: AppData[] = [
     tagline: "Diviértete con tus amigos",
     description:
       "Juegos rápidos para romper el hielo en cualquier fiesta. Retos, rondas y categorías pensadas para grupos reales, sin descargas pesadas ni fricción.",
+    longDescription:
+      "Piripi reúne retos, rondas y categorías pensadas para encender cualquier plan con amigos: una cena, una previa o una noche sin planes claros. Sin cuentas, sin anuncios y sin conexión: abres la app y en segundos tienes partida.",
     iconClass: "icon-piripi",
     iconSrc: "/images/piripi-icon.png",
     initial: "P",
@@ -95,6 +97,11 @@ export const apps: AppData[] = [
           "Todo el contenido vive en el dispositivo. No necesitas conexión para jugar.",
       },
     ],
+    responsibleParty: {
+      name: "Samuel Parreño Martinez",
+      email: "samuparre96@gmail.com",
+      country: "España",
+    },
     privacyShort: {
       data: "No recogemos datos personales. Piripi funciona en local y no pide cuenta de usuario. Los retos y preferencias se guardan en tu dispositivo.",
       storage:

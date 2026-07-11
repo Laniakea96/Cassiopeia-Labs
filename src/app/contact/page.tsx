@@ -17,10 +17,10 @@ export default function ContactPage() {
             Hablemos, <span className="serif">sin prisa.</span>
           </h1>
           <p className="hero-sub">
-            Leemos <span className="accent-amber">todos</span> los correos. Si
-            escribes con una <span className="accent-orange">idea</span>, una
+            Leemos <span className="accent-ice">todos</span> los correos. Si
+            escribes con una <span className="accent-sky">idea</span>, una
             duda o simplemente para{" "}
-            <span className="accent-purple">saludar</span>, te responderemos.
+            <span className="accent-blue">saludar</span>, te responderemos.
           </p>
         </div>
       </section>

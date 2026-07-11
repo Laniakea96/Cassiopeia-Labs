@@ -1,10 +1,52 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AppData } from "@/types/app";
 
 interface Props {
   app: AppData;
 }
 
+const SECTION_LABELS: Record<string, string> = {
+  support: "Soporte",
+  privacy: "Privacidad",
+  terms: "Términos",
+};
+
 export default function AppHeader({ app }: Props) {
+  const pathname = usePathname();
+  // /apps/[slug]/<section> → cabecera compacta en subpáginas
+  const section = pathname.split("/")[3];
+  const sectionLabel = section ? SECTION_LABELS[section] : undefined;
+
+  if (sectionLabel) {
+    return (
+      <section className="hero compact wrap app-hero-mini">
+        <div className="hero-inner stagger">
+          <div className="app-hero-mini-row">
+            <Link
+              href={`/apps/${app.slug}`}
+              className={`app-icon ${app.iconClass} app-icon-sm`}
+              aria-label={`Volver a ${app.name}`}
+            >
+              <img src={app.iconSrc} alt="" />
+            </Link>
+            <h1 className="hero-title app-hero-mini-title">
+              <span className="serif">{app.name}</span>{" "}
+              <span className="app-hero-cat">— {sectionLabel}</span>
+            </h1>
+            {(section === "privacy" || section === "terms") && (
+              <div className="privacy-date app-hero-mini-date">
+                Actualizado <span className="tag">{app.lastUpdated}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="hero compact wrap">
       <div className="hero-inner stagger">
@@ -25,14 +67,9 @@ export default function AppHeader({ app }: Props) {
             <img src={app.iconSrc} alt="" />
           </div>
         </div>
-        <h1
-          className="hero-title"
-          style={{ maxWidth: "none", whiteSpace: "nowrap" }}
-        >
+        <h1 className="hero-title app-hero-title">
           <span className="serif">{app.name}</span>{" "}
-          <span style={{ color: "var(--dim)", fontWeight: 400 }}>
-            — {app.category}
-          </span>
+          <span className="app-hero-cat">— {app.category}</span>
         </h1>
         {app.tagline !== app.category && (
           <p className="hero-sub">{app.tagline}</p>
@@ -49,7 +86,12 @@ export default function AppHeader({ app }: Props) {
         </p>
         <div
           className="card-actions"
-          style={{ marginTop: 24, justifyContent: "flex-start", gap: 12 }}
+          style={{
+            marginTop: 24,
+            justifyContent: "flex-start",
+            gap: 12,
+            flexWrap: "wrap",
+          }}
         >
           {app.links.appStore ? (
             <a

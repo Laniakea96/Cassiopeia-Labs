@@ -21,10 +21,10 @@ export default function PrivacyPage() {
           </h1>
           <p className="hero-sub">
             Una política por app, redactada en{" "}
-            <span className="accent-amber">lenguaje directo</span>. Estas
+            <span className="accent-ice">lenguaje directo</span>. Estas
             páginas cumplen los requisitos de{" "}
-            <span className="accent-yellow">App Store</span> y{" "}
-            <span className="accent-orange">Google Play</span> y se enlazan
+            <span className="accent-pink">App Store</span> y{" "}
+            <span className="accent-sky">Google Play</span> y se enlazan
             desde la ficha de cada producto.
           </p>
         </div>

@@ -25,6 +25,14 @@ export default function FeaturedApps() {
                   En obras
                 </span>
               )}
+              {app.status === "live" && (
+                <span
+                  className="card-ribbon card-ribbon-live"
+                  aria-label="Disponible"
+                >
+                  Disponible
+                </span>
+              )}
               <Link
                 href={`/apps/${app.slug}`}
                 className="app-icon-burst-wrap"

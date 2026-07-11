@@ -16,10 +16,10 @@ export default function AboutPage() {
           </h1>
           <p className="hero-sub">
             Un estudio independiente con sede en{" "}
-            <span className="accent-amber">España</span>. Producto{" "}
-            <span className="accent-purple">pequeño</span>,{" "}
-            <span className="accent-orange">cuidado</span> y con{" "}
-            <span className="accent-yellow">voz propia</span>.
+            <span className="accent-ice">España</span>. Producto{" "}
+            <span className="accent-blue">pequeño</span>,{" "}
+            <span className="accent-sky">cuidado</span> y con{" "}
+            <span className="accent-pink">voz propia</span>.
           </p>
         </div>
       </section>

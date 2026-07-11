@@ -36,17 +36,6 @@ export default async function SupportPage({
 
   return (
     <article className="privacy-card">
-      <div className="privacy-head">
-        <div className="privacy-head-l">
-          <div className={`mini-icon ${app.iconClass}`} aria-hidden="true">
-            <img src={app.iconSrc} alt="" />
-          </div>
-          <h3>
-            {app.name}{" "}
-            <span style={{ fontWeight: 400, color: "var(--dim)" }}>— Soporte</span>
-          </h3>
-        </div>
-      </div>
       <div className="prose">
         {content ? (
           content.content

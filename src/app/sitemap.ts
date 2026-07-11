@@ -1,12 +1,11 @@
 import { MetadataRoute } from "next";
 import { getAllApps } from "@/data/apps";
-import { getAllBlogSlugs } from "@/lib/blog";
 import { siteConfig } from "@/data/siteConfig";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
 
-  const staticPages = ["", "/about", "/apps", "/blog", "/contact"].map(
+  const staticPages = ["", "/about", "/apps", "/privacy", "/contact"].map(
     (route) => ({
       url: `${baseUrl}${route}`,
       lastModified: new Date(),
@@ -20,10 +19,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  const blogPages = getAllBlogSlugs().map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-  }));
-
-  return [...staticPages, ...appPages, ...blogPages];
+  return [...staticPages, ...appPages];
 }

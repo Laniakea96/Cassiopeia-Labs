@@ -24,9 +24,9 @@ export default function HeroSection() {
 
         <p className="hero-sub">
           Cassiopeia Labs es un estudio independiente. Diseñamos y construimos
-          producto <span className="accent-purple">pequeño</span>,{" "}
-          <span className="accent-orange">cuidado</span> y con{" "}
-          <span className="accent-yellow">voz propia</span>.
+          producto <span className="accent-blue">pequeño</span>,{" "}
+          <span className="accent-sky">cuidado</span> y con{" "}
+          <span className="accent-pink">voz propia</span>.
         </p>
 
         <div className="cta-row">

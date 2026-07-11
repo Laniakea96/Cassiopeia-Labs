@@ -27,9 +27,18 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description:
       "Estudio independiente de apps móviles. Piripi, Luupy y Mimoney.",
+    images: [
+      {
+        url: "/images/logo-galaxy-lg.jpg",
+        width: 512,
+        height: 512,
+        alt: "Cassiopeia Labs",
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
+    images: ["/images/logo-galaxy-lg.jpg"],
   },
 };
 
