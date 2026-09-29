@@ -33,14 +33,12 @@ export default async function TermsPage({
   const content = await getAppContent(slug, "terms");
 
   return (
-    <article className="privacy-card">
-      <div className="prose">
-        {content ? (
-          content.content
-        ) : (
-          <p>Términos y condiciones de {app.name} próximamente.</p>
-        )}
-      </div>
+    <article className="doc prose">
+      {content ? (
+        content.content
+      ) : (
+        <p>Términos y condiciones de {app.name} próximamente.</p>
+      )}
     </article>
   );
 }

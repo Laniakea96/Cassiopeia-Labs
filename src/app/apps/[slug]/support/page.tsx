@@ -35,26 +35,20 @@ export default async function SupportPage({
   const content = await getAppContent(slug, "support");
 
   return (
-    <article className="privacy-card">
-      <div className="prose">
-        {content ? (
-          content.content
-        ) : (
-          <p>
-            ¿Necesitas ayuda con {app.name}? Escríbenos a{" "}
-            <a
-              href={`mailto:${SUPPORT_EMAIL}`}
-              style={{
-                color: "var(--fg)",
-                borderBottom: "1px solid var(--line-strong)",
-              }}
-            >
-              {SUPPORT_EMAIL}
-            </a>
-            .
-          </p>
-        )}
-      </div>
+    <article className="doc prose">
+      {content ? (
+        content.content
+      ) : (
+        <p>
+          ¿Necesitas ayuda con {app.name}? Escríbenos a{" "}
+          <a
+            href={`mailto:${SUPPORT_EMAIL}`}
+          >
+            {SUPPORT_EMAIL}
+          </a>
+          .
+        </p>
+      )}
     </article>
   );
 }

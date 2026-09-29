@@ -33,14 +33,12 @@ export default async function PrivacyPage({
   const content = await getAppContent(slug, "privacy");
 
   return (
-    <article className="privacy-card">
-      <div className="prose">
-        {content ? (
-          content.content
-        ) : (
-          <p>Política de privacidad de {app.name} próximamente.</p>
-        )}
-      </div>
+    <article className="doc prose">
+      {content ? (
+        content.content
+      ) : (
+        <p>Política de privacidad de {app.name} próximamente.</p>
+      )}
     </article>
   );
 }

@@ -22,7 +22,7 @@ export default async function AppLayout({
   return (
     <>
       <AppHeader app={app} />
-      <section className="block wrap" style={{ paddingTop: 0 }}>
+      <section className="wrap app-body">
         <AppSubNav slug={slug} />
         {children}
       </section>

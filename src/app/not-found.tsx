@@ -8,34 +8,21 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="hero compact wrap" style={{ minHeight: "70vh" }}>
-      <div className="hero-inner stagger">
-        <p className="section-kicker">Error 404</p>
-        <h1 className="hero-title">
-          Perdido en el <span className="serif">espacio.</span>
-        </h1>
-        <p className="hero-sub">
-          Esta página no existe, se movió de órbita o nunca llegó a
-          despegar. Vuelve a casa y sigue explorando desde ahí.
-        </p>
-        <div className="cta-row">
-          <Link href="/" className="btn btn-gradient">
-            <span>Volver al inicio</span>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M5 12h14M13 5l7 7-7 7" />
-            </svg>
-          </Link>
-          <Link href="/apps" className="btn btn-ghost">
-            <span>Ver las apps</span>
-          </Link>
-        </div>
+    <section className="wrap lost">
+      <p className="lost-code" aria-hidden="true">
+        404
+      </p>
+      <h1 className="h1">Perdido en el espacio.</h1>
+      <p className="lede">
+        Esta página no existe, cambió de órbita o nunca llegó a despegar.
+      </p>
+      <div className="hero-cta">
+        <Link href="/" className="btn btn-star">
+          Volver al inicio
+        </Link>
+        <Link href="/#apps" className="btn btn-line">
+          Ver las apps
+        </Link>
       </div>
     </section>
   );

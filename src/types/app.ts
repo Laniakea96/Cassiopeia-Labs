@@ -32,6 +32,8 @@ export interface AppData {
   color?: string;
   accentFrom?: string;
   accentTo?: string;
+  /** Color de la estrella de la app en la web (halo y detalles). */
+  glow?: string;
   category: string;
   platforms: AppPlatform[];
   links: {

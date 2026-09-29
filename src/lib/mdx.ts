@@ -23,18 +23,3 @@ export async function getAppContent(
 
   return { content: mdx.content, frontmatter: data };
 }
-
-export async function getBlogContent(slug: string) {
-  const filePath = path.join(contentDir, "blog", `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
-
-  const source = fs.readFileSync(filePath, "utf-8");
-  const { content, data } = matter(source);
-
-  const mdx = await compileMDX({
-    source: content,
-    options: { parseFrontmatter: false },
-  });
-
-  return { content: mdx.content, frontmatter: data };
-}

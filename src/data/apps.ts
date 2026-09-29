@@ -10,12 +10,13 @@ export const apps: AppData[] = [
     longDescription:
       "Luupy reúne tus suscripciones digitales y pagos recurrentes (streaming, software, gimnasio, recibos del hogar) en una vista limpia. Sumas mensuales y anuales, recordatorios antes de cada renovación y categorías para detectar lo que ya no usas.",
     iconClass: "icon-luupy",
+    glow: "#c9a2ff",
     iconSrc: "/images/luupy-icon.png",
     initial: "L",
     accentFrom: "#f4a06a",
     accentTo: "#bf5af2",
     category: "Gestor de suscripciones",
-    platforms: ["ios"],
+    platforms: ["ios", "android"],
     links: {
       appStore:
         "https://apps.apple.com/es/app/luupy-controla-tus-gastos/id6762055476",
@@ -43,7 +44,7 @@ export const apps: AppData[] = [
       {
         title: "Sincronización entre dispositivos",
         description:
-          "Tu cuenta mantiene tus datos al día en iPhone e iPad. Inicio de sesión seguro con Firebase.",
+          "Tu cuenta mantiene tus datos al día en todos tus dispositivos, iOS y Android. Inicio de sesión seguro con Firebase.",
       },
     ],
     responsibleParty: {
@@ -63,7 +64,7 @@ export const apps: AppData[] = [
     featured: true,
     status: "live",
   },
-  // piripi & mimoney use status "wip" — la cinta "En construcción"
+  // piripi & gymest use status "wip" — la cinta "En construcción"
   // se muestra en la tarjeta hasta que estén publicadas.
   {
     slug: "piripi",
@@ -74,6 +75,7 @@ export const apps: AppData[] = [
     longDescription:
       "Piripi reúne retos, rondas y categorías pensadas para encender cualquier plan con amigos: una cena, una previa o una noche sin planes claros. Sin cuentas, sin anuncios y sin conexión: abres la app y en segundos tienes partida.",
     iconClass: "icon-piripi",
+    glow: "#ff8fa8",
     iconSrc: "/images/piripi-icon.png",
     initial: "P",
     category: "Diviértete con tus amigos",
@@ -115,44 +117,59 @@ export const apps: AppData[] = [
     status: "wip",
   },
   {
-    slug: "mimoney",
-    name: "Mimoney",
-    tagline: "Finanzas personales",
+    slug: "gymest",
+    name: "Gymest",
+    tagline: "Entrenamiento y nutrición",
     description:
-      "Un lugar tranquilo para ver en qué se va tu dinero. Categorías simples, entradas rápidas, sin conectar cuentas ni pedir permisos innecesarios.",
-    iconClass: "icon-mimoney",
-    iconSrc: "/images/mimoney-icon.png",
-    initial: "M",
-    category: "Finanzas personales",
+      "Tu gimnasio y tu dieta en una sola app. Rutinas con progresión automática, registro de series con temporizador de descanso y seguimiento de calorías y macros con escáner de código de barras.",
+    longDescription:
+      "Gymest diseña tus rutinas según tu objetivo (hipertrofia, fuerza o perder grasa), te dice cuándo toca subir peso en cada ejercicio y lleva la cuenta de lo que comes. Sin cuentas ni anuncios: tus datos viven en tu iPhone y en tu iCloud.",
+    iconClass: "icon-gymest",
+    glow: "#ffb27a",
+    iconSrc: "/images/gymest-icon.png",
+    initial: "G",
+    accentFrom: "#d2602b",
+    accentTo: "#e9763e",
+    category: "Entrenamiento y nutrición",
     platforms: ["ios"],
     links: {},
     screenshots: [],
     features: [
       {
-        title: "Tus movimientos, en local",
+        title: "Rutinas que progresan",
         description:
-          "Apuntas ingresos y gastos a mano. Mimoney no se conecta con bancos ni terceros.",
+          "Series, repeticiones y descansos según tu objetivo. Gymest te sugiere cuándo subir peso, repetir o descargar.",
       },
       {
-        title: "Categorías simples",
+        title: "Registro sin fricción",
         description:
-          "Pocas categorías, bien pensadas. Suma por mes, por categoría y por etiqueta.",
+          "Apunta cada serie en segundos, con temporizador de descanso en la pantalla de bloqueo y récords personales.",
       },
       {
-        title: "Bloqueo con biometría",
+        title: "Nutrición con escáner",
         description:
-          "Face ID, Touch ID o huella opcional para abrir la app. Tus datos no salen del dispositivo.",
+          "Calorías, macros y agua del día. Escanea el código de barras de un alimento y se añade solo.",
+      },
+      {
+        title: "Apple Salud e iCloud",
+        description:
+          "Importa tu peso, guarda tus entrenos en Salud y sincroniza tus datos entre dispositivos con tu iCloud.",
       },
     ],
-    privacyShort: {
-      data: "Mimoney no conecta con bancos ni proveedores financieros. Los movimientos que introduces nunca salen de tu dispositivo.",
-      storage:
-        "Base de datos local cifrada; backup opcional bajo control del usuario.",
-      auth: "Opcionalmente biometría (Face ID, Touch ID o huella) para abrir la app. No gestionamos credenciales ni las transmitimos.",
-      contact:
-        "Cualquier duda, a samuparre96@gmail.com.",
+    responsibleParty: {
+      name: "Samuel Parreño Martinez",
+      email: "samuparre96@gmail.com",
+      country: "España",
     },
-    lastUpdated: "22 de abril de 2026",
+    privacyShort: {
+      data: "No recogemos datos personales. Tus entrenos, comidas, peso y perfil se guardan en tu dispositivo y en tu iCloud privado; nosotros no tenemos acceso a ellos.",
+      storage:
+        "Base de datos local en el iPhone, sincronizada con tu cuenta de iCloud (CloudKit, base de datos privada). Sin servidores propios.",
+      auth: "Gymest no requiere cuenta. La sincronización usa tu Apple ID de iCloud; no gestionamos ni vemos credenciales.",
+      contact:
+        "Para cualquier cuestión sobre privacidad, escríbenos a samuparre96@gmail.com.",
+    },
+    lastUpdated: "30 de septiembre de 2026",
     featured: true,
     status: "wip",
   },

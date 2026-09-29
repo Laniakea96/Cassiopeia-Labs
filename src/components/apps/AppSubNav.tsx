@@ -18,23 +18,14 @@ export default function AppSubNav({ slug }: Props) {
   const pathname = usePathname();
 
   return (
-    <nav className="jump-nav" aria-label="Secciones de la app">
+    <nav className="tabs" aria-label="Secciones de la app">
       {tabs.map((tab) => {
         const href = `/apps/${slug}${tab.path}`;
-        const isActive = pathname === href;
         return (
           <Link
             key={tab.path}
             href={href}
-            aria-current={isActive ? "page" : undefined}
-            style={
-              isActive
-                ? {
-                    background: "rgba(255,255,255,0.08)",
-                    color: "var(--fg)",
-                  }
-                : undefined
-            }
+            aria-current={pathname === href ? "page" : undefined}
           >
             {tab.label}
           </Link>

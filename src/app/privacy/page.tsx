@@ -4,7 +4,7 @@ import { getAllApps } from "@/data/apps";
 
 export const metadata: Metadata = {
   title: "Privacidad",
-  description: "Políticas de privacidad de Piripi, Luupy y Mimoney.",
+  description: "Políticas de privacidad de Piripi, Luupy y Gymest.",
 };
 
 const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
@@ -14,117 +14,76 @@ export default function PrivacyPage() {
 
   return (
     <>
-      <section className="hero compact wrap">
-        <div className="hero-inner stagger">
-          <h1 className="hero-title">
-            Privacidad, <span className="serif">clara.</span>
-          </h1>
-          <p className="hero-sub">
-            Una política por app, redactada en{" "}
-            <span className="accent-ice">lenguaje directo</span>. Estas
-            páginas cumplen los requisitos de{" "}
-            <span className="accent-pink">App Store</span> y{" "}
-            <span className="accent-sky">Google Play</span> y se enlazan
-            desde la ficha de cada producto.
-          </p>
-        </div>
-      </section>
+      <header className="wrap page-head">
+        <h1 className="h1">Privacidad, clara.</h1>
+        <p className="lede">
+          Una política por app, en lenguaje directo. Estas páginas cumplen los
+          requisitos de App Store y Google Play y se enlazan desde la ficha de
+          cada app.
+        </p>
+      </header>
 
-      <section className="block privacy-section">
-        <div className="wrap">
-          <div className="privacy-stack">
-            {apps.map((app) => {
-              const p = app.privacyShort!;
-              const emailMatch = p.contact.match(EMAIL_REGEX);
-              const email = emailMatch?.[0] ?? "";
-              const contactParts = email
-                ? p.contact.split(email)
-                : [p.contact, ""];
-              return (
-                <article
-                  key={app.slug}
-                  className="privacy-card reveal"
-                  id={`privacy-${app.slug}`}
-                >
-                  <div className="privacy-head">
-                    <div className="privacy-head-l">
-                      <div
-                        className={`mini-icon ${app.iconClass}`}
-                        aria-hidden="true"
-                      >
-                        <img src={app.iconSrc} alt="" />
-                      </div>
-                      <h3>
-                        {app.name}{" "}
-                        <span style={{ fontWeight: 400, color: "var(--dim)" }}>
-                          — Privacidad
-                        </span>
-                      </h3>
-                    </div>
-                    <div className="privacy-date">
-                      Actualizado <span className="tag">{app.lastUpdated}</span>
-                    </div>
-                  </div>
-                  <div className="privacy-body">
-                    <div>
-                      <h4>Datos que recogemos</h4>
-                      <p>{p.data}</p>
-                    </div>
-                    <div>
-                      <h4>Almacenamiento</h4>
-                      <p>{p.storage}</p>
-                    </div>
-                    <div>
-                      <h4>Autenticación</h4>
-                      <p>{p.auth}</p>
-                    </div>
-                    <div>
-                      <h4>Contacto</h4>
-                      <p>
-                        {contactParts[0]}
-                        {email && (
-                          <a
-                            href={`mailto:${email}`}
-                            style={{
-                              color: "var(--fg)",
-                              borderBottom: "1px solid var(--line-strong)",
-                            }}
-                          >
-                            {email}
-                          </a>
-                        )}
-                        {contactParts[1] ?? ""}
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: 24,
-                      paddingTop: 16,
-                      borderTop: "1px solid var(--line)",
-                      display: "flex",
-                      gap: 16,
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <Link
-                      className="link-quiet"
-                      href={`/apps/${app.slug}/privacy`}
-                    >
-                      Ver política completa <span className="arrow">→</span>
-                    </Link>
-                    <Link
-                      className="link-quiet"
-                      href={`/apps/${app.slug}/terms`}
-                    >
-                      Términos <span className="arrow">→</span>
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
+      <section className="wrap privacy-list">
+        {apps.map((app) => {
+          const p = app.privacyShort!;
+          const email = p.contact.match(EMAIL_REGEX)?.[0] ?? "";
+          const [before, after] = email ? p.contact.split(email) : [p.contact, ""];
+
+          return (
+            <article
+              key={app.slug}
+              id={`privacy-${app.slug}`}
+              className="privacy-item"
+              style={{ "--glow": app.glow } as React.CSSProperties}
+            >
+              <header className="privacy-item-head">
+                <div className={`app-head-icon ${app.iconClass}`} aria-hidden="true">
+                  <img src={app.iconSrc} alt="" />
+                </div>
+                <div>
+                  <h2>{app.name}</h2>
+                  <p className="app-head-date">Actualizado el {app.lastUpdated}</p>
+                </div>
+              </header>
+
+              <dl className="privacy-facts">
+                <div>
+                  <dt>Datos que recogemos</dt>
+                  <dd>{p.data}</dd>
+                </div>
+                <div>
+                  <dt>Almacenamiento</dt>
+                  <dd>{p.storage}</dd>
+                </div>
+                <div>
+                  <dt>Autenticación</dt>
+                  <dd>{p.auth}</dd>
+                </div>
+                <div>
+                  <dt>Contacto</dt>
+                  <dd>
+                    {before}
+                    {email && (
+                      <a className="text-link" href={`mailto:${email}`}>
+                        {email}
+                      </a>
+                    )}
+                    {after}
+                  </dd>
+                </div>
+              </dl>
+
+              <p className="privacy-links">
+                <Link className="text-link" href={`/apps/${app.slug}/privacy`}>
+                  Política completa de {app.name}
+                </Link>
+                <Link className="text-link" href={`/apps/${app.slug}/terms`}>
+                  Términos de uso
+                </Link>
+              </p>
+            </article>
+          );
+        })}
       </section>
     </>
   );

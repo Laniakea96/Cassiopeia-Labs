@@ -1,99 +1,80 @@
 import Link from "next/link";
+import CurrentYear from "./CurrentYear";
+import { getAllApps } from "@/data/apps";
+import { siteConfig } from "@/data/siteConfig";
 
 export default function Footer() {
+  const apps = getAllApps();
+
   return (
-    <footer className="site-foot">
+    <footer className="foot">
       <div className="wrap">
-        <div className="foot-grid">
-          <div className="foot-col foot-brand">
-            <Link href="/" className="brand">
-              <span className="star" aria-hidden="true" />
-              <span>
-                Cass
-                <span className="i-star">ı</span>
-                ope
-                <span className="i-star">ı</span>
-                a
-              </span>
-              <span className="labs">Labs</span>
-            </Link>
-            <Link href="/contact" className="btn btn-ghost">
-              Escríbenos
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M4 6h16v12H4z" />
-                <path d="M4 6l8 7 8-7" />
-              </svg>
-            </Link>
+        <div className="foot-top">
+          <div className="foot-lead">
+            <p>¿Tienes una idea que merece salir al espacio?</p>
+            <a className="foot-mail" href={`mailto:${siteConfig.email}`}>
+              {siteConfig.email}
+            </a>
           </div>
 
-          <div className="foot-col">
-            <h5>Apps</h5>
-            <ul>
-              <li>
-                <Link href="/apps/luupy">Luupy</Link>
-              </li>
-              <li>
-                <Link href="/apps/piripi">Piripi</Link>
-              </li>
-              <li>
-                <Link href="/apps/mimoney">Mimoney</Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="foot-col">
-            <h5>Enlaces</h5>
-            <ul>
-              <li>
-                <a
-                  href="https://wa.me/34655153092?text=Hola%20Samuel%2C%20te%20escribo%20desde%20tu%20web%20por%20una%20oportunidad%20de%20colaboraci%C3%B3n."
-                  target="_blank"
-                  rel="noopener"
-                >
-                  WhatsApp ↗
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/samuelparreno/"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  LinkedIn ↗
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/Laniakea96"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  GitHub ↗
-                </a>
-              </li>
-              <li>
-                <Link href="/privacy">Privacidad</Link>
-              </li>
-              <li>
-                <Link href="/about">Estudio</Link>
-              </li>
-            </ul>
-          </div>
+          <nav className="foot-cols" aria-label="Pie de página">
+            <div>
+              <p className="foot-title">Apps</p>
+              <ul>
+                {apps.map((app) => (
+                  <li key={app.slug}>
+                    <Link href={`/apps/${app.slug}`}>{app.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="foot-title">Estudio</p>
+              <ul>
+                <li>
+                  <Link href="/#bitacora">Bitácora</Link>
+                </li>
+                <li>
+                  <Link href="/#estudio">Sobre el estudio</Link>
+                </li>
+                <li>
+                  <Link href="/privacy">Privacidad</Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="foot-title">Redes</p>
+              <ul>
+                <li>
+                  <a href={siteConfig.social.linkedin} target="_blank" rel="noopener">
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a href={siteConfig.social.github} target="_blank" rel="noopener">
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a href={siteConfig.social.whatsapp} target="_blank" rel="noopener">
+                    WhatsApp
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
+      </div>
 
-        <div className="foot-bottom">
-          <div>
-            © <span suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}
-            Cassiopeia Labs. Todos los derechos reservados.
-          </div>
-        </div>
+      <p className="foot-word" aria-hidden="true">
+        Cassiopeia
+      </p>
+
+      <div className="wrap foot-bottom">
+        <span>
+          © <CurrentYear buildYear={new Date().getFullYear()} /> Cassiopeia Labs
+        </span>
+        <span>Pide un deseo.</span>
       </div>
     </footer>
   );
