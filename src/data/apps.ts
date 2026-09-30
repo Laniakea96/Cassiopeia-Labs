@@ -81,7 +81,40 @@ export const apps: AppData[] = [
     category: "Diviértete con tus amigos",
     platforms: ["ios"],
     links: {},
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/images/apps/piripi/screen-1.webp",
+        alt: "Pantalla de inicio de Piripi con el personaje y los modos Piripímetro, Rompehielos y Juegecitos",
+      },
+      {
+        src: "/images/apps/piripi/screen-2.webp",
+        alt: "Resultado del Piripímetro: un medidor al 50 % con el mensaje «¡Vas muy fuerte!»",
+      },
+      {
+        src: "/images/apps/piripi/screen-3.webp",
+        alt: "Reto «El flamenco»: mantener el equilibrio a la pata coja con el móvil",
+      },
+      {
+        src: "/images/apps/piripi/screen-4.webp",
+        alt: "Lista de juegos: El tembleque, Dedos sudados, Speed, Se me lengua la traba y más",
+      },
+      {
+        src: "/images/apps/piripi/screen-5.webp",
+        alt: "Juego de la botella girando sobre una mesa de madera",
+      },
+      {
+        src: "/images/apps/piripi/screen-6.webp",
+        alt: "Predicciones de futuro: se añaden los nombres de los jugadores antes de empezar",
+      },
+      {
+        src: "/images/apps/piripi/screen-7.webp",
+        alt: "Modos rompehielos: ¿Cuánto me conoces?, ¿Verdadero o falso?, El impostor y más",
+      },
+    ],
+    mascot: {
+      src: "/images/apps/piripi/mascot-lying.webp",
+      alt: "Piripi, el personaje de la app, tumbado y con cara de cansado",
+    },
     features: [
       {
         title: "Retos rápidos",

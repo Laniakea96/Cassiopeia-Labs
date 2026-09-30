@@ -1607,6 +1607,290 @@ p {
   color: var(--dim);
 }
 
+/* Cabecera con capturas: texto a la izquierda, tres móviles en abanico a
+   la derecha que se separan al pasar el ratón. */
+.app-head-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 96px);
+}
+.phone-fan {
+  position: relative;
+  height: clamp(380px, 38vw, 580px);
+  display: grid;
+  place-items: center;
+}
+.fan-phone {
+  position: absolute;
+  width: clamp(170px, 16.5vw, 250px);
+  height: auto;
+  aspect-ratio: 640 / 1385;
+  border-radius: clamp(16px, 1.6vw, 26px);
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.7s var(--ease),
+    box-shadow 0.7s ease;
+}
+.fan-0 {
+  transform: translateX(-52%) rotate(-9deg) scale(0.9);
+}
+.fan-1 {
+  z-index: 1;
+  transform: translateY(-2%);
+  box-shadow:
+    0 40px 80px -24px rgba(0, 0, 0, 0.8),
+    0 0 90px -20px var(--glow, var(--b));
+}
+.fan-2 {
+  transform: translateX(52%) rotate(9deg) scale(0.9);
+}
+.phone-fan:hover .fan-0 {
+  transform: translateX(-78%) rotate(-13deg) scale(0.92);
+}
+.phone-fan:hover .fan-1 {
+  transform: translateY(-5%) scale(1.03);
+}
+.phone-fan:hover .fan-2 {
+  transform: translateX(78%) rotate(13deg) scale(0.92);
+}
+
+@media (max-width: 900px) {
+  .app-head-split {
+    grid-template-columns: 1fr;
+  }
+  .phone-fan {
+    height: clamp(340px, 90vw, 460px);
+    margin-top: 16px;
+  }
+  .fan-phone {
+    width: clamp(140px, 36vw, 210px);
+  }
+}
+
+/* El personaje de la app, tumbado sobre la línea de las pestañas. */
+.tabs-row {
+  position: relative;
+}
+.tabs-mascot {
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  width: clamp(180px, 20vw, 300px);
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+}
+@media (max-width: 700px) {
+  .tabs-mascot {
+    position: static;
+    display: block;
+    width: 170px;
+    margin: 20px 0 -4px auto;
+    order: -1;
+  }
+  .tabs-row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.round-btn {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--line-2);
+  color: var(--star);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+.round-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.round-btn:hover:not(:disabled) {
+  border-color: var(--b);
+  background: rgba(157, 180, 255, 0.14);
+}
+.round-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Galería de capturas ---------------------------------------------------- */
+
+.shots {
+  margin-top: clamp(64px, 7vw, 104px);
+}
+.shots-title {
+  margin-bottom: 28px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(24px, 3vw, 40px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.shots-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(190px, 19vw, 280px);
+  gap: clamp(14px, 1.6vw, 24px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* La fila ocupa todo el ancho de la pantalla: las capturas solo se cortan
+     en los bordes de la ventana, no en los márgenes del contenido. En
+     reposo, la primera sigue alineada con el texto. */
+  --bleed: calc((100vw - min(100vw, var(--max))) / 2 + var(--pad));
+  margin-inline: calc(var(--bleed) * -1);
+  padding: 8px var(--bleed) 28px;
+  scroll-padding-inline: var(--bleed);
+  scrollbar-width: none;
+}
+.shots-track::-webkit-scrollbar {
+  display: none;
+}
+.shots-track li {
+  scroll-snap-align: start;
+}
+.shot {
+  display: block;
+  width: 100%;
+  border-radius: clamp(16px, 1.6vw, 24px);
+  overflow: hidden;
+  cursor: zoom-in;
+  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.7);
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s ease;
+}
+.shot img {
+  width: 100%;
+  height: auto;
+}
+.shot:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 30px 50px -20px rgba(0, 0, 0, 0.8),
+    0 0 60px -16px var(--glow, var(--b));
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 3vw, 40px);
+  padding: 24px;
+  background: rgba(5, 7, 22, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: fade-in 0.3s ease both;
+}
+.lightbox-img {
+  max-height: 88svh;
+  width: auto;
+  max-width: min(78vw, 460px);
+  border-radius: 28px;
+  box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9);
+  animation: shot-in 0.4s var(--ease) both;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.lightbox-count {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  translate: -50% 0;
+  font-size: 14px;
+  color: var(--dim);
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes shot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+@media (max-width: 600px) {
+  .lightbox {
+    grid-template-columns: 1fr;
+  }
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    bottom: 12px;
+  }
+  .lightbox-prev {
+    left: 20px;
+  }
+  .lightbox-next {
+    right: 20px;
+  }
+}
+
+/* Texto largo con una captura fija al lado (páginas de apps con capturas). */
+.doc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 72ch) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 120px);
+  align-items: start;
+}
+.doc-aside {
+  position: sticky;
+  top: calc(var(--nav-h) + 40px);
+  margin-top: 56px;
+  justify-self: center;
+  width: min(100%, 300px);
+}
+.doc-aside img {
+  width: 100%;
+  height: auto;
+  border-radius: 26px;
+  transform: rotate(3deg);
+  box-shadow:
+    0 40px 80px -30px rgba(0, 0, 0, 0.85),
+    0 0 90px -30px var(--glow, var(--b));
+  transition: transform 0.6s var(--ease);
+}
+.doc-aside:hover img {
+  transform: rotate(0deg) scale(1.02);
+}
+@media (max-width: 900px) {
+  .doc-layout {
+    grid-template-columns: 1fr;
+  }
+  .doc-aside {
+    position: static;
+    width: min(70%, 260px);
+    margin-top: 0;
+    order: -1;
+  }
+  .doc-layout .doc {
+    margin-top: 0;
+  }
+}
+
 /* Texto largo (MDX): descripción, privacidad, soporte y términos */
 .doc {
   max-width: 72ch;

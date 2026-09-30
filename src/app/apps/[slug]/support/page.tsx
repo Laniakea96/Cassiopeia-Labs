@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getApp, getAllApps } from "@/data/apps";
 import { getAppContent } from "@/lib/mdx";
 import type { Metadata } from "next";
+import DocWithShot from "@/components/apps/DocWithShot";
 
 export async function generateStaticParams() {
   return getAllApps().map((app) => ({ slug: app.slug }));
@@ -35,20 +36,15 @@ export default async function SupportPage({
   const content = await getAppContent(slug, "support");
 
   return (
-    <article className="doc prose">
+    <DocWithShot app={app} shot={0}>
       {content ? (
         content.content
       ) : (
         <p>
           ¿Necesitas ayuda con {app.name}? Escríbenos a{" "}
-          <a
-            href={`mailto:${SUPPORT_EMAIL}`}
-          >
-            {SUPPORT_EMAIL}
-          </a>
-          .
+          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
         </p>
       )}
-    </article>
+    </DocWithShot>
   );
 }

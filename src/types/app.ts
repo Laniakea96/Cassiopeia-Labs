@@ -7,6 +7,12 @@ export interface AppFeature {
   description: string;
 }
 
+export interface AppImage {
+  src: string;
+  /** Qué muestra la imagen, para lectores de pantalla. */
+  alt: string;
+}
+
 export interface AppResponsibleParty {
   name: string;
   email: string;
@@ -42,7 +48,9 @@ export interface AppData {
     web?: string;
     instagram?: string;
   };
-  screenshots: string[];
+  screenshots: AppImage[];
+  /** Personaje de la app que decora sus páginas (PNG/WebP con transparencia). */
+  mascot?: AppImage;
   features?: AppFeature[];
   responsibleParty?: AppResponsibleParty;
   privacyShort?: AppPrivacyShort;

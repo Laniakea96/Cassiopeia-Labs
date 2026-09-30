@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getApp, getAllApps } from "@/data/apps";
 import { getAppContent } from "@/lib/mdx";
 import type { Metadata } from "next";
+import DocWithShot from "@/components/apps/DocWithShot";
 
 export async function generateStaticParams() {
   return getAllApps().map((app) => ({ slug: app.slug }));
@@ -33,12 +34,12 @@ export default async function PrivacyPage({
   const content = await getAppContent(slug, "privacy");
 
   return (
-    <article className="doc prose">
+    <DocWithShot app={app} shot={5}>
       {content ? (
         content.content
       ) : (
         <p>Política de privacidad de {app.name} próximamente.</p>
       )}
-    </article>
+    </DocWithShot>
   );
 }

@@ -23,7 +23,16 @@ export default async function AppLayout({
     <>
       <AppHeader app={app} />
       <section className="wrap app-body">
-        <AppSubNav slug={slug} />
+        <div className="tabs-row">
+          <AppSubNav slug={slug} />
+          {app.mascot && (
+            <img
+              className="tabs-mascot"
+              src={app.mascot.src}
+              alt={app.mascot.alt}
+            />
+          )}
+        </div>
         {children}
       </section>
     </>

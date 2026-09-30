@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getApp, getAllApps } from "@/data/apps";
 import { getAppContent } from "@/lib/mdx";
 import type { Metadata } from "next";
+import ScreenshotGallery from "@/components/apps/ScreenshotGallery";
 
 export async function generateStaticParams() {
   return getAllApps().map((app) => ({ slug: app.slug }));
@@ -45,8 +46,16 @@ export default async function AppPage({
         </ul>
       )}
 
+      {app.screenshots.length > 0 && (
+        <ScreenshotGallery appName={app.name} shots={app.screenshots} />
+      )}
+
       <article className="doc prose">
-        {content ? content.content : <p>{app.longDescription ?? app.description}</p>}
+        {content ? (
+          content.content
+        ) : (
+          <p>{app.longDescription ?? app.description}</p>
+        )}
       </article>
     </>
   );

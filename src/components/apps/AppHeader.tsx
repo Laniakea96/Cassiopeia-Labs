@@ -49,58 +49,88 @@ export default function AppHeader({ app }: Props) {
     { href: app.links.playStore, label: "Google Play" },
   ].filter((s): s is { href: string; label: string } => Boolean(s.href));
 
-  return (
-    <header className="wrap app-head" style={glow}>
-      <div className={`app-head-icon app-head-icon-lg ${app.iconClass}`}>
-        <img src={app.iconSrc} alt="" />
-      </div>
-      <p className={`status status-${app.status}`}>{statusLabel(app)}</p>
-      <h1 className="app-head-name">{app.name}</h1>
-      <p className="app-head-tagline">{app.tagline}</p>
-      <p className="app-head-desc">{app.longDescription ?? app.description}</p>
+  // Tres capturas en abanico junto al texto (la del medio, delante).
+  const fan =
+    app.screenshots.length >= 3
+      ? [
+          app.screenshots[1],
+          app.screenshots[0],
+          app.screenshots[4] ?? app.screenshots[2],
+        ]
+      : null;
 
-      <div className="app-head-actions">
-        {stores.length > 0 ? (
-          stores.map((s) => (
+  return (
+    <header
+      className={`wrap app-head${fan ? " app-head-split" : ""}`}
+      style={glow}
+    >
+      <div className="app-head-text">
+        <div className={`app-head-icon app-head-icon-lg ${app.iconClass}`}>
+          <img src={app.iconSrc} alt="" />
+        </div>
+        <p className={`status status-${app.status}`}>{statusLabel(app)}</p>
+        <h1 className="app-head-name">{app.name}</h1>
+        <p className="app-head-tagline">{app.tagline}</p>
+        <p className="app-head-desc">
+          {app.longDescription ?? app.description}
+        </p>
+
+        <div className="app-head-actions">
+          {stores.length > 0 ? (
+            stores.map((s) => (
+              <a
+                key={s.label}
+                className="btn btn-star"
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Descargar en {s.label}
+              </a>
+            ))
+          ) : (
+            <p className="app-head-soon">
+              Todavía no está en las tiendas.{" "}
+              <Link href="/#contacto" className="text-link">
+                Avísame cuando salga
+              </Link>
+            </p>
+          )}
+          {app.links.instagram && (
             <a
-              key={s.label}
-              className="btn btn-star"
-              href={s.href}
+              className="btn btn-line"
+              href={app.links.instagram}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Descargar en {s.label}
+              Instagram
             </a>
-          ))
-        ) : (
-          <p className="app-head-soon">
-            Todavía no está en las tiendas.{" "}
-            <Link href="/#contacto" className="text-link">
-              Avísame cuando salga
-            </Link>
-          </p>
-        )}
-        {app.links.instagram && (
-          <a
-            className="btn btn-line"
-            href={app.links.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </a>
-        )}
-        {app.links.web && (
-          <a
-            className="btn btn-line"
-            href={app.links.web}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Web
-          </a>
-        )}
+          )}
+          {app.links.web && (
+            <a
+              className="btn btn-line"
+              href={app.links.web}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Web
+            </a>
+          )}
+        </div>
       </div>
+
+      {fan && (
+        <div className="phone-fan" aria-hidden="true">
+          {fan.map((shot, i) => (
+            <img
+              key={shot.src}
+              className={`fan-phone fan-${i}`}
+              src={shot.src}
+              alt=""
+            />
+          ))}
+        </div>
+      )}
     </header>
   );
 }
