@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { getApp, getAllApps } from "@/data/apps";
 import { getAppContent } from "@/lib/mdx";
 import type { Metadata } from "next";
-import DocWithShot from "@/components/apps/DocWithShot";
 
 export async function generateStaticParams() {
   return getAllApps().map((app) => ({ slug: app.slug }));
@@ -34,12 +33,16 @@ export default async function TermsPage({
   const content = await getAppContent(slug, "terms");
 
   return (
-    <DocWithShot app={app} shot={1}>
+    <article className="doc prose">
+      <header className="doc-head">
+        <h2>Términos de uso</h2>
+        <p className="app-head-date">Actualizado el {app.lastUpdated}</p>
+      </header>
       {content ? (
         content.content
       ) : (
         <p>Términos y condiciones de {app.name} próximamente.</p>
       )}
-    </DocWithShot>
+    </article>
   );
 }

@@ -3,6 +3,7 @@ import { Michroma, Sora } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
+import PageTransition from "@/components/layout/PageTransition";
 import { siteConfig } from "@/data/siteConfig";
 import "./globals.css";
 
@@ -33,8 +34,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/logo-galaxy-lg.jpg",
-        width: 512,
-        height: 512,
+        width: 1200,
+        height: 1200,
         alt: "Cassiopeia Labs",
       },
     ],
@@ -67,6 +68,7 @@ export default function RootLayout({
         <Footer />
 
         <SmoothScroll />
+        <PageTransition />
       </body>
     </html>
   );

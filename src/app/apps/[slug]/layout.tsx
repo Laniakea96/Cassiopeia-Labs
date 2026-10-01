@@ -19,8 +19,12 @@ export default async function AppLayout({
 
   if (!app) notFound();
 
+  // El color de acento de la app tiñe toda su página (ver .app-theme).
   return (
-    <>
+    <div
+      className="app-theme"
+      style={{ "--glow": app.glow } as React.CSSProperties}
+    >
       <AppHeader app={app} />
       <section className="wrap app-body">
         <div className="tabs-row">
@@ -35,6 +39,6 @@ export default async function AppLayout({
         </div>
         {children}
       </section>
-    </>
+    </div>
   );
 }

@@ -2,7 +2,11 @@ import { siteConfig } from "@/data/siteConfig";
 
 export default function ContactSection() {
   return (
-    <section id="contacto" className="block wrap contact" aria-labelledby="contact-title">
+    <section
+      id="contacto"
+      className="block wrap contact"
+      aria-labelledby="contact-title"
+    >
       <h2 id="contact-title" className="contact-title">
         Hablemos, sin prisa.
       </h2>
@@ -24,7 +28,7 @@ export default function ContactSection() {
               Escribir un email
             </a>
             <a
-              className="btn btn-line"
+              className="btn btn-line btn-whatsapp"
               href={siteConfig.social.whatsapp}
               target="_blank"
               rel="noopener"

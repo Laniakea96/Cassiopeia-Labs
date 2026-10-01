@@ -19,11 +19,11 @@ const ENTRIES = [
     body: "Retos para fiestas que funcionan sin conexión y sin cuenta. Muy pronto en la App Store.",
   },
   {
-    app: "Gymest",
-    href: "/apps/gymest",
-    icon: "/images/gymest-icon.png",
+    app: "Rexis",
+    href: "/apps/rexis",
+    icon: "/images/rexis-icon.png",
     status: "En desarrollo",
-    title: "Gymest está en desarrollo.",
+    title: "Rexis está en desarrollo.",
     body: "Rutinas que progresan, nutrición con escáner de código de barras y conexión con Apple Salud. Seguimos construyéndola.",
   },
 ];

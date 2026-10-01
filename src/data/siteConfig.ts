@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Cassiopeia Labs",
   description:
-    "Estudio independiente de apps móviles. Piripi, Luupy y Gymest.",
+    "Estudio independiente de apps móviles. Piripi, Luupy y Rexis.",
   url: "https://cassiopeialabs.com",
   email: "samuparre96@gmail.com",
   social: {

@@ -1,14 +1,28 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { AppImage } from "@/types/app";
 
 interface Props {
   appName: string;
   shots: AppImage[];
+  /** Título de la sección; por defecto, "Así se ve <app>". */
+  title?: string;
+  /** Capturas directas del móvil: se muestran con marco de dispositivo. */
+  framed?: boolean;
+  /** "ads": piezas de campaña (4:5), más anchas y sin marco. */
+  variant?: "screens" | "ads";
 }
 
-export default function ScreenshotGallery({ appName, shots }: Props) {
+export default function ScreenshotGallery({
+  appName,
+  shots,
+  title,
+  framed = false,
+  variant = "screens",
+}: Props) {
+  const titleId = useId();
+  const isAds = variant === "ads";
   const trackRef = useRef<HTMLOListElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLButtonElement | null>(null);
@@ -100,13 +114,16 @@ export default function ScreenshotGallery({ appName, shots }: Props) {
   }, [viewing === null, close, step]);
 
   return (
-    <section className="shots" aria-labelledby="shots-title">
-      <h2 id="shots-title" className="shots-title">
-        Así se ve {appName}
+    <section
+      className={`shots${isAds ? " shots-ads" : ""}`}
+      aria-labelledby={titleId}
+    >
+      <h2 id={titleId} className="shots-title">
+        {title ?? `Así se ve ${appName}`}
       </h2>
 
       <ol
-        className="shots-track"
+        className={`shots-track${shots.length <= 4 && !isAds ? " is-few" : ""}`}
         ref={trackRef}
         tabIndex={0}
         aria-label={`Capturas de ${appName}`}
@@ -115,7 +132,7 @@ export default function ScreenshotGallery({ appName, shots }: Props) {
           <li key={shot.src}>
             <button
               type="button"
-              className="shot"
+              className={`shot${framed ? " is-device" : ""}`}
               onClick={(e) => {
                 openerRef.current = e.currentTarget;
                 setViewing(i);
@@ -126,8 +143,8 @@ export default function ScreenshotGallery({ appName, shots }: Props) {
                 src={shot.src}
                 alt={shot.alt}
                 loading="lazy"
-                width={640}
-                height={1385}
+                width={isAds ? 900 : 640}
+                height={isAds ? 1117 : 1385}
               />
             </button>
           </li>
@@ -167,7 +184,7 @@ export default function ScreenshotGallery({ appName, shots }: Props) {
           </button>
           <img
             key={shots[viewing].src}
-            className="lightbox-img"
+            className={`lightbox-img${framed ? " is-device" : ""}${isAds ? " is-ad" : ""}`}
             src={shots[viewing].src}
             alt={shots[viewing].alt}
           />

@@ -258,6 +258,15 @@ p {
     0 0 24px rgba(157, 180, 255, 0.5),
     0 0 60px rgba(120, 150, 255, 0.25);
 }
+/* WhatsApp se enciende en su verde. */
+.btn-whatsapp:hover {
+  color: #04210f;
+  border-color: #25d366;
+  background: #25d366;
+  box-shadow:
+    0 0 24px rgba(37, 211, 102, 0.55),
+    0 0 64px rgba(37, 211, 102, 0.25);
+}
 /* En la lista de apps, cada botón brilla con el color de su app. */
 .app-row .btn-line:hover {
   color: var(--void);
@@ -328,24 +337,15 @@ p {
   font-size: 17px;
   letter-spacing: -0.01em;
 }
-.nav-brand svg {
-  width: 18px;
-  height: 18px;
-  fill: var(--k);
-  filter: drop-shadow(0 0 6px rgba(255, 201, 138, 0.8));
+.nav-brand img {
+  width: 24px;
+  height: auto;
+  filter: drop-shadow(0 0 6px rgba(255, 220, 170, 0.6));
 }
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 24px;
-}
-.nav-mail {
-  font-size: 15px;
-  color: var(--dim);
-  transition: color 0.2s ease;
-}
-.nav-mail:hover {
-  color: var(--star);
 }
 .menu-toggle {
   display: inline-flex;
@@ -405,11 +405,6 @@ p {
   transform: rotate(-45deg);
 }
 
-@media (max-width: 820px) {
-  .nav-mail {
-    display: none;
-  }
-}
 
 /* Menú a pantalla completa --------------------------------------------- */
 
@@ -418,7 +413,6 @@ p {
   inset: 0;
   z-index: 90;
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   align-items: end;
   gap: 48px;
   padding: calc(var(--nav-h) + 32px) var(--pad) clamp(32px, 6vw, 72px);
@@ -460,17 +454,10 @@ p {
   animation: menu-in 0.7s var(--ease) both;
   animation-delay: calc(0.4s + var(--i) * 70ms);
 }
-.menu.is-open .menu-side > div {
-  animation: menu-in 0.7s var(--ease) both;
-  animation-delay: calc(0.6s + var(--j) * 80ms);
-}
 /* Al cerrar, los enlaces se van hacia arriba en orden inverso. */
 .menu.is-closing .menu-main a {
   animation: menu-out 0.3s ease-in both;
   animation-delay: calc((4 - var(--i)) * 35ms);
-}
-.menu.is-closing .menu-side > div {
-  animation: menu-out 0.25s ease-in both;
 }
 /* Cada sección se enciende con el color de una estrella distinta, brilla y
    se desplaza un poco. Se usa "translate" (no "transform") porque la
@@ -501,28 +488,11 @@ p {
     0 0 48px color-mix(in srgb, var(--hover) 35%, transparent);
   translate: 16px 0;
 }
-.menu-side a:hover {
-  color: var(--k);
-}
-.menu-side {
-  display: grid;
-  gap: 28px;
-  padding-bottom: 12px;
-}
-.menu-side-title,
 .foot-title {
   font-size: 14px;
   color: var(--mute);
   margin-bottom: 8px;
 }
-.menu-side a {
-  font-size: 18px;
-  line-height: 1.9;
-  color: var(--dim);
-  transition: color 0.2s ease;
-}
-
-
 @keyframes menu-in {
   from {
     opacity: 0;
@@ -572,6 +542,90 @@ p {
 .comet.is-out {
   animation: comet-fly 0.75s var(--comet-ease) 0.12s reverse both;
 }
+/* Al entrar en una app: de la esquina inferior izquierda a la superior
+   derecha. Fotogramas propios (no "reverse") para ir sincronizada con el
+   barrido "peel", que usa la misma curva. */
+.comet.is-rise {
+  animation: comet-rise 0.95s var(--comet-ease) both;
+}
+@keyframes comet-rise {
+  from {
+    transform: translate(0, 100vh);
+  }
+  to {
+    transform: translate(100vw, 0);
+  }
+}
+/* Al volver atrás: de la esquina superior izquierda a la inferior derecha. */
+.comet.is-dive {
+  animation: comet-dive 0.95s var(--comet-ease) both;
+}
+@keyframes comet-dive {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(100vw, 100vh);
+  }
+}
+
+/* Copia de la página anterior que se queda en pantalla al hacer clic y que
+   la estrella fugaz va retirando: nunca se ve la pantalla vacía. */
+.page-peel {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(1100px 700px at 85% -10%, rgba(70, 92, 220, 0.3), transparent 60%),
+    radial-gradient(900px 620px at -10% 45%, rgba(255, 143, 168, 0.1), transparent 60%),
+    url("/images/stars-a.svg") center / cover,
+    var(--void);
+}
+.page-peel-sheet {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+/* La copia es una imagen quieta: nada se vuelve a animar dentro. */
+.page-peel *,
+.page-peel *::before,
+.page-peel *::after {
+  animation: none !important;
+  transition: none !important;
+}
+/* Sin animaciones, la línea de la constelación volvería a "sin dibujar". */
+.page-peel .con-reveal {
+  stroke-dashoffset: 0;
+}
+/* Frente diagonal que en el instante t pasa por (t, 1 − t), justo donde va
+   la cabeza de la estrella; lo que queda arriba a la derecha sigue tapado. */
+.page-peel.is-peeling {
+  animation: peel 0.95s var(--comet-ease) both !important;
+}
+@keyframes peel {
+  from {
+    clip-path: polygon(-100% 0, 100% 0, 100% 200%);
+  }
+  to {
+    clip-path: polygon(100% 0, 100% 0, 100% 0);
+  }
+}
+/* Al volver atrás, la copia se retira hacia la esquina inferior derecha: el
+   frente pasa en el instante t por (t, t), donde va la cabeza de la estrella. */
+.page-peel.is-peeling.is-dive {
+  animation: peel-back 0.95s var(--comet-ease) both !important;
+}
+@keyframes peel-back {
+  from {
+    clip-path: polygon(100% -100%, 100% 100%, -100% 100%);
+  }
+  to {
+    clip-path: polygon(100% 100%, 100% 100%, 100% 100%);
+  }
+}
+
 .comet-body {
   position: relative;
   transform: rotate(var(--angle));
@@ -630,12 +684,6 @@ p {
   }
 }
 
-@media (max-width: 820px) {
-  .menu {
-    grid-template-columns: 1fr;
-    align-content: space-between;
-  }
-}
 
 /* Hero ------------------------------------------------------------------ */
 
@@ -934,18 +982,11 @@ p {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
-  border-radius: 50%;
-  box-shadow: 0 0 80px 20px rgba(157, 180, 255, 0.25);
-  animation: galaxy-spin 40s linear infinite;
-}
-
-@keyframes galaxy-spin {
-  to {
-    transform: rotate(360deg);
-  }
+  width: 180px;
+  height: 180px;
+  margin: -90px 0 0 -90px;
+  /* Estrella sin fondo y fija: el brillo sigue la forma de sus rayos. */
+  filter: drop-shadow(0 0 24px rgba(255, 220, 170, 0.35));
 }
 .orbit-body {
   position: absolute;
@@ -1115,8 +1156,8 @@ p {
 .icon-piripi {
   background: #000;
 }
-.icon-gymest {
-  background: #f1ece4;
+.icon-rexis {
+  background: #1f201a;
 }
 
 /* Bitácora --------------------------------------------------------------- */
@@ -1324,6 +1365,25 @@ p {
 .about-social a:hover {
   color: var(--star);
 }
+/* Cada palabra se enciende con su color solo al pasar el ratón por ella:
+   estudio en amarillo, persona en naranja y cielo en azul. */
+.about-title span {
+  transition:
+    color 0.5s ease,
+    text-shadow 0.6s ease;
+}
+.about-title .w-estudio:hover {
+  color: #ffd34d;
+  text-shadow: 0 0 28px rgba(255, 211, 77, 0.45);
+}
+.about-title .w-persona:hover {
+  color: #ff9f43;
+  text-shadow: 0 0 28px rgba(255, 159, 67, 0.45);
+}
+.about-title .w-cielo:hover {
+  color: #7fa8ff;
+  text-shadow: 0 0 28px rgba(127, 168, 255, 0.5);
+}
 .about-text {
   display: grid;
   gap: 18px;
@@ -1500,6 +1560,7 @@ p {
   padding-top: calc(var(--nav-h) + clamp(48px, 8vw, 104px));
 }
 .app-head-icon {
+  display: block;
   flex-shrink: 0;
   width: 64px;
   height: 64px;
@@ -1543,18 +1604,6 @@ p {
 .app-head-soon {
   color: var(--dim);
 }
-.app-head-mini {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.app-head-title {
-  font-size: clamp(24px, 3.4vw, 44px);
-  font-family: var(--display);
-  font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 1.15;
-}
 .app-head-date {
   margin-top: 6px;
   font-size: 15px;
@@ -1584,7 +1633,52 @@ p {
 }
 .tabs a[aria-current="page"] {
   color: var(--star);
-  border-color: var(--k);
+}
+/* Línea de la pestaña activa: se desliza de una pestaña a otra. */
+.tabs {
+  position: relative;
+}
+.tabs-bar {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--glow, var(--k));
+  box-shadow: 0 0 12px rgb(from var(--glow, var(--k)) r g b / 0.7);
+  transition:
+    transform 0.5s var(--ease),
+    width 0.5s var(--ease);
+}
+
+/* Contenido de cada pestaña: entra desde el lado hacia el que se avanza. */
+.tab-pane.from-right {
+  animation: pane-in-right 0.55s var(--ease) backwards;
+}
+.tab-pane.from-left {
+  animation: pane-in-left 0.55s var(--ease) backwards;
+}
+@keyframes pane-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(56px);
+    filter: blur(6px);
+  }
+}
+@keyframes pane-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-56px);
+    filter: blur(6px);
+  }
+}
+
+/* Título y fecha al principio de Privacidad, Términos y Soporte. */
+.doc-head h2 {
+  margin: 0;
+}
+.doc-head {
+  margin-bottom: 2em;
 }
 
 .features {
@@ -1605,6 +1699,174 @@ p {
 .features p {
   margin-top: 8px;
   color: var(--dim);
+}
+
+/* Marco de móvil para capturas directas (sin mockup): bisel oscuro,
+   esquinas de iPhone y un reflejo fino en el borde. */
+.is-device {
+  --bezel: clamp(5px, 0.5vw, 9px);
+  border: var(--bezel) solid #0b0b10;
+  border-radius: clamp(24px, 2.4vw, 40px);
+  background: #0b0b10;
+}
+img.is-device,
+.shot.is-device {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 30px 60px -22px rgba(0, 0, 0, 0.75);
+}
+.fan-phone.is-device.fan-1 {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 40px 80px -24px rgba(0, 0, 0, 0.8),
+    0 0 90px -20px var(--glow, var(--b));
+}
+.shot.is-device:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 30px 50px -20px rgba(0, 0, 0, 0.8),
+    0 0 60px -16px var(--glow, var(--b));
+}
+.shot.is-device img {
+  border-radius: calc(clamp(24px, 2.4vw, 40px) - var(--bezel));
+}
+.lightbox-img.is-device {
+  border-width: 10px;
+  border-radius: 44px;
+}
+/* Insignias oficiales de App Store y Google Play: se muestran tal cual,
+   a la misma altura y con aire entre ellas (lo piden sus guías). */
+.store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.store-badge {
+  display: block;
+  border-radius: 10px;
+  /* La sombra ya existe con el color de la app y opacidad 0: así el brillo
+     crece suave desde el primer instante (de "sin sombra", o desde un negro
+     transparente, el navegador lo aplicaría tarde y de golpe). */
+  filter: drop-shadow(0 4px 12px rgb(from var(--glow, var(--b)) r g b / 0));
+  transition:
+    transform 0.25s var(--ease),
+    filter 0.25s ease-out;
+}
+.store-badge img {
+  display: block;
+  width: auto;
+  height: 52px;
+}
+.store-badge:hover {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 8px 22px rgb(from var(--glow, var(--b)) r g b / 0.6));
+}
+
+/* Tema de cada app: en su página, los acentos usan su color (--glow). */
+.app-theme ::selection {
+  background: var(--glow);
+  color: var(--void);
+}
+.app-theme .tabs a:hover {
+  color: var(--glow);
+}
+.app-theme .features li {
+  border-top-color: color-mix(in srgb, var(--glow) 55%, transparent);
+}
+.app-theme .prose li::marker {
+  color: var(--glow);
+}
+.app-theme .prose blockquote {
+  border-left-color: var(--glow);
+}
+.app-theme .prose a,
+.app-theme .text-link {
+  text-decoration-color: color-mix(in srgb, var(--glow) 60%, transparent);
+}
+.app-theme .prose a:hover,
+.app-theme .text-link:hover {
+  color: var(--glow);
+}
+.app-theme .btn-line:hover {
+  color: var(--void);
+  border-color: var(--glow);
+  background: var(--glow);
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--glow) 60%, transparent),
+    0 0 64px color-mix(in srgb, var(--glow) 30%, transparent);
+}
+.app-theme .round-btn:hover:not(:disabled) {
+  border-color: var(--glow);
+  background: color-mix(in srgb, var(--glow) 18%, transparent);
+}
+
+/* El icono de la app se enciende con su color al pasar el ratón. */
+.app-head-icon-lg {
+  transition:
+    box-shadow 0.45s ease,
+    transform 0.45s var(--ease);
+}
+.app-head-icon-lg:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 0 1px rgb(from var(--glow, var(--b)) r g b / 0.5),
+    0 0 40px rgb(from var(--glow, var(--b)) r g b / 0.6),
+    0 0 110px rgb(from var(--glow, var(--b)) r g b / 0.35);
+}
+
+/* El nombre de la app se enciende con su color al pasar el ratón. */
+.app-head-name {
+  transition:
+    color 0.5s ease,
+    text-shadow 0.6s ease;
+}
+.app-theme .app-head-name:hover {
+  color: var(--glow);
+  text-shadow:
+    0 0 30px rgb(from var(--glow) r g b / 0.5),
+    0 0 90px rgb(from var(--glow) r g b / 0.25);
+}
+
+/* Instagram: logo y, al pasar el ratón, el degradado de la marca. */
+.btn-instagram svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+.btn-instagram svg .dot {
+  fill: currentColor;
+  stroke: none;
+}
+/* El degradado va en una capa que aparece con opacidad: un fondo con
+   degradado no se puede animar y saldría de golpe. */
+.btn-instagram {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.btn-instagram::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(45deg, #feda75, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.app-theme .btn-instagram:hover,
+.btn-instagram:hover {
+  color: #fff;
+  border-color: transparent;
+  background: transparent;
+  box-shadow:
+    0 0 24px rgba(214, 41, 118, 0.55),
+    0 0 64px rgba(150, 47, 191, 0.3);
+}
+.btn-instagram:hover::before {
+  opacity: 1;
 }
 
 /* Cabecera con capturas: texto a la izquierda, tres móviles en abanico a
@@ -1752,10 +2014,28 @@ p {
      en los bordes de la ventana, no en los márgenes del contenido. En
      reposo, la primera sigue alineada con el texto. */
   --bleed: calc((100vw - min(100vw, var(--max))) / 2 + var(--pad));
-  margin-inline: calc(var(--bleed) * -1);
-  padding: 8px var(--bleed) 28px;
+  margin: -56px calc(var(--bleed) * -1) -36px;
+  /* Hueco arriba y abajo: el desplazamiento horizontal recorta también lo
+     que sobresale en vertical, y así el brillo y la elevación al pasar el
+     ratón no se cortan. Los márgenes negativos lo compensan. */
+  padding: 64px var(--bleed) 64px;
   scroll-padding-inline: var(--bleed);
   scrollbar-width: none;
+}
+/* Anuncios: piezas 4:5 más anchas; tres llenan el ancho del contenido. */
+.shots-ads .shots-track {
+  grid-auto-columns: clamp(240px, 30vw, 500px);
+}
+.shots-ads .shot {
+  cursor: zoom-in;
+}
+.lightbox-img.is-ad {
+  max-width: min(86vw, 720px);
+}
+
+/* Con pocas capturas, más grandes para que llenen el ancho del contenido. */
+.shots-track.is-few {
+  grid-auto-columns: clamp(200px, 23vw, 360px);
 }
 .shots-track::-webkit-scrollbar {
   display: none;
@@ -1849,48 +2129,6 @@ p {
   }
 }
 
-/* Texto largo con una captura fija al lado (páginas de apps con capturas). */
-.doc-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 72ch) minmax(0, 1fr);
-  gap: clamp(40px, 6vw, 120px);
-  align-items: start;
-}
-.doc-aside {
-  position: sticky;
-  top: calc(var(--nav-h) + 40px);
-  margin-top: 56px;
-  justify-self: center;
-  width: min(100%, 300px);
-}
-.doc-aside img {
-  width: 100%;
-  height: auto;
-  border-radius: 26px;
-  transform: rotate(3deg);
-  box-shadow:
-    0 40px 80px -30px rgba(0, 0, 0, 0.85),
-    0 0 90px -30px var(--glow, var(--b));
-  transition: transform 0.6s var(--ease);
-}
-.doc-aside:hover img {
-  transform: rotate(0deg) scale(1.02);
-}
-@media (max-width: 900px) {
-  .doc-layout {
-    grid-template-columns: 1fr;
-  }
-  .doc-aside {
-    position: static;
-    width: min(70%, 260px);
-    margin-top: 0;
-    order: -1;
-  }
-  .doc-layout .doc {
-    margin-top: 0;
-  }
-}
-
 /* Texto largo (MDX): descripción, privacidad, soporte y términos */
 .doc {
   max-width: 72ch;
@@ -1960,6 +2198,92 @@ p {
 }
 .prose blockquote p {
   margin: 0;
+}
+
+/* Página de apps ------------------------------------------------------- */
+
+.catalog {
+  padding-bottom: clamp(88px, 10vw, 144px);
+}
+.catalog-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 120px);
+  padding-block: clamp(56px, 7vw, 112px);
+  border-top: 1px solid var(--line);
+}
+.catalog-item.is-flip .catalog-text {
+  order: 2;
+}
+.catalog-name {
+  margin-top: 12px;
+  font-size: clamp(44px, 6.5vw, 104px);
+}
+.catalog-features {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+.catalog-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+.catalog-features li::before {
+  content: "";
+  width: 9px;
+  height: 13px;
+  flex-shrink: 0;
+  background: var(--glow);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  filter: drop-shadow(0 0 4px var(--glow));
+}
+.catalog-item .app-head-actions {
+  margin-top: 32px;
+}
+.catalog-visual {
+  display: grid;
+  place-items: center;
+}
+/* Los móviles del abanico van en posición absoluta: sin ancho propio, el
+   contenedor se encogería a cero. */
+.catalog-visual > .phone-fan {
+  width: 100%;
+}
+/* Sin capturas: el icono en grande con su brillo. */
+.catalog-icon {
+  width: clamp(170px, 20vw, 280px);
+  aspect-ratio: 1;
+  border-radius: 24%;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgb(from var(--glow) r g b / 0.3),
+    0 0 120px -20px var(--glow);
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s ease;
+}
+.catalog-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.catalog-icon:hover {
+  transform: scale(1.04) rotate(-2deg);
+  box-shadow:
+    0 0 0 1px rgb(from var(--glow) r g b / 0.5),
+    0 0 160px -10px var(--glow);
+}
+
+@media (max-width: 900px) {
+  .catalog-item {
+    grid-template-columns: 1fr;
+  }
+  .catalog-item.is-flip .catalog-text {
+    order: 0;
+  }
 }
 
 /* Privacidad ------------------------------------------------------------ */

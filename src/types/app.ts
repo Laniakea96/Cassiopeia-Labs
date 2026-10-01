@@ -49,6 +49,12 @@ export interface AppData {
     instagram?: string;
   };
   screenshots: AppImage[];
+  /** Capturas directas del móvil (sin marco ni fondo): la web les pone marco. */
+  screenshotsFramed?: boolean;
+  /** Capturas del abanico (índices en screenshots): izquierda, centro y derecha. */
+  fan?: [number, number, number];
+  /** Anuncios de la campaña de la app (piezas verticales 4:5). */
+  ads?: AppImage[];
   /** Personaje de la app que decora sus páginas (PNG/WebP con transparencia). */
   mascot?: AppImage;
   features?: AppFeature[];

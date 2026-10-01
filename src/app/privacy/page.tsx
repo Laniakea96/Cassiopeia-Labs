@@ -4,7 +4,7 @@ import { getAllApps } from "@/data/apps";
 
 export const metadata: Metadata = {
   title: "Privacidad",
-  description: "Políticas de privacidad de Piripi, Luupy y Gymest.",
+  description: "Políticas de privacidad de Piripi, Luupy y Rexis.",
 };
 
 const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;

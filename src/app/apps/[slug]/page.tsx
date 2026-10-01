@@ -47,7 +47,20 @@ export default async function AppPage({
       )}
 
       {app.screenshots.length > 0 && (
-        <ScreenshotGallery appName={app.name} shots={app.screenshots} />
+        <ScreenshotGallery
+          appName={app.name}
+          shots={app.screenshots}
+          framed={app.screenshotsFramed}
+        />
+      )}
+
+      {app.ads && app.ads.length > 0 && (
+        <ScreenshotGallery
+          appName={app.name}
+          shots={app.ads}
+          title={`${app.name}, en campaña`}
+          variant="ads"
+        />
       )}
 
       <article className="doc prose">

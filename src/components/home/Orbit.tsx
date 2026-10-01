@@ -36,7 +36,7 @@ export default function Orbit({ bodies }: { bodies: Body[] }) {
           <ellipse cx="300" cy="170" rx="280" ry="150" />
           <ellipse cx="300" cy="170" rx="190" ry="100" />
         </svg>
-        <img className="orbit-core" src="/images/logo-galaxy.png" alt="" />
+        <img className="orbit-core" src="/images/star.webp" alt="" />
         {bodies.map((b, i) => (
           <span
             key={b.key}

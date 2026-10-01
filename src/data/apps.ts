@@ -10,7 +10,7 @@ export const apps: AppData[] = [
     longDescription:
       "Luupy reúne tus suscripciones digitales y pagos recurrentes (streaming, software, gimnasio, recibos del hogar) en una vista limpia. Sumas mensuales y anuales, recordatorios antes de cada renovación y categorías para detectar lo que ya no usas.",
     iconClass: "icon-luupy",
-    glow: "#c9a2ff",
+    glow: "#8c52ff",
     iconSrc: "/images/luupy-icon.png",
     initial: "L",
     accentFrom: "#f4a06a",
@@ -24,7 +24,38 @@ export const apps: AppData[] = [
         "https://play.google.com/store/apps/details?id=com.cassiopeialabs.luupy",
       instagram: "https://www.instagram.com/luupy.app/",
     },
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/images/apps/luupy/mockup-1.webp",
+        alt: "«Todas tus suscripciones en el mismo lugar»: pantalla principal de Luupy con el gasto mensual, la proyección anual y cada suscripción con los días que faltan para el pago",
+      },
+      {
+        src: "/images/apps/luupy/mockup-2.webp",
+        alt: "«Elige las suscripciones por categoría»: selector de categorías como Cloud, Comida y delivery, Compras, Educación, Finanzas, Gaming, Hogar, IA y Música",
+      },
+      {
+        src: "/images/apps/luupy/mockup-3.webp",
+        alt: "«Controla todos los gastos que necesites»: categoría Hogar con luz, agua, gas, internet, hipoteca, seguro del hogar, telefonía, alarma y limpieza",
+      },
+      {
+        src: "/images/apps/luupy/mockup-4.webp",
+        alt: "«Descubre en qué se va tu dinero»: estadísticas con el tiempo de cada suscripción y el gráfico de gasto por categoría",
+      },
+    ],
+    ads: [
+      {
+        src: "/images/apps/luupy/ad-1.webp",
+        alt: "Anuncio de Luupy: «La tranquilidad de cancelar a tiempo». Una mujer sonríe aliviada con la mano en el pecho, con el móvil sobre la mesa",
+      },
+      {
+        src: "/images/apps/luupy/ad-2.webp",
+        alt: "Anuncio de Luupy: «No te lleves más sorpresas». Un hombre mira preocupado el móvil en su salón",
+      },
+      {
+        src: "/images/apps/luupy/ad-3.webp",
+        alt: "Anuncio de Luupy: «Tú no te acordabas de esa suscripción. Pero Luupy sí». Una mujer sonríe mirando el móvil en el sofá",
+      },
+    ],
     features: [
       {
         title: "Tus suscripciones, juntas",
@@ -64,7 +95,7 @@ export const apps: AppData[] = [
     featured: true,
     status: "live",
   },
-  // piripi & gymest use status "wip" — la cinta "En construcción"
+  // piripi & rexis use status "wip" — la cinta "En construcción"
   // se muestra en la tarjeta hasta que estén publicadas.
   {
     slug: "piripi",
@@ -75,7 +106,7 @@ export const apps: AppData[] = [
     longDescription:
       "Piripi reúne retos, rondas y categorías pensadas para encender cualquier plan con amigos: una cena, una previa o una noche sin planes claros. Sin cuentas, sin anuncios y sin conexión: abres la app y en segundos tienes partida.",
     iconClass: "icon-piripi",
-    glow: "#ff8fa8",
+    glow: "#ffd34d",
     iconSrc: "/images/piripi-icon.png",
     initial: "P",
     category: "Diviértete con tus amigos",
@@ -150,28 +181,52 @@ export const apps: AppData[] = [
     status: "wip",
   },
   {
-    slug: "gymest",
-    name: "Gymest",
+    slug: "rexis",
+    name: "Rexis",
     tagline: "Entrenamiento y nutrición",
     description:
       "Tu gimnasio y tu dieta en una sola app. Rutinas con progresión automática, registro de series con temporizador de descanso y seguimiento de calorías y macros con escáner de código de barras.",
     longDescription:
-      "Gymest diseña tus rutinas según tu objetivo (hipertrofia, fuerza o perder grasa), te dice cuándo toca subir peso en cada ejercicio y lleva la cuenta de lo que comes. Sin cuentas ni anuncios: tus datos viven en tu iPhone y en tu iCloud.",
-    iconClass: "icon-gymest",
-    glow: "#ffb27a",
-    iconSrc: "/images/gymest-icon.png",
+      "Rexis diseña tus rutinas según tu objetivo (hipertrofia, fuerza o perder grasa), te dice cuándo toca subir peso en cada ejercicio y lleva la cuenta de lo que comes. Sin cuentas ni anuncios: tus datos viven en tu iPhone y en tu iCloud.",
+    iconClass: "icon-rexis",
+    glow: "#b6f624",
+    iconSrc: "/images/rexis-icon.png",
     initial: "G",
     accentFrom: "#d2602b",
     accentTo: "#e9763e",
     category: "Entrenamiento y nutrición",
     platforms: ["ios"],
     links: {},
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/images/apps/rexis/screen-1.webp",
+        alt: "«Elige tu rutina y a entrenar»: pantalla Registrar con las rutinas guardadas para elegir qué entrenaste hoy",
+      },
+      {
+        src: "/images/apps/rexis/screen-2.webp",
+        alt: "«Diseña tu plan por días o músculos»: pantalla Rutinas con el plan por días, el análisis del plan y los ejercicios de cada día",
+      },
+      {
+        src: "/images/apps/rexis/screen-3.webp",
+        alt: "«Controla tus macros sin complicarte»: pantalla Nutrición con calorías, proteína, carbohidratos, grasas, agua y comidas del día",
+      },
+      {
+        src: "/images/apps/rexis/screen-4.webp",
+        alt: "«Mira cómo progresas cada semana»: resumen semanal con días entrenados, series, volumen, próximos objetivos y récords",
+      },
+      {
+        src: "/images/apps/rexis/screen-5.webp",
+        alt: "«Apunta cada serie en segundos»: registro del press banca con kilos, repeticiones y RPE de cada serie",
+      },
+    ],
+    // Abanico: macros (izquierda), plan por días o músculos (centro,
+    // delante) y progreso (derecha).
+    fan: [2, 1, 3],
     features: [
       {
         title: "Rutinas que progresan",
         description:
-          "Series, repeticiones y descansos según tu objetivo. Gymest te sugiere cuándo subir peso, repetir o descargar.",
+          "Series, repeticiones y descansos según tu objetivo. Rexis te sugiere cuándo subir peso, repetir o descargar.",
       },
       {
         title: "Registro sin fricción",
@@ -198,7 +253,7 @@ export const apps: AppData[] = [
       data: "No recogemos datos personales. Tus entrenos, comidas, peso y perfil se guardan en tu dispositivo y en tu iCloud privado; nosotros no tenemos acceso a ellos.",
       storage:
         "Base de datos local en el iPhone, sincronizada con tu cuenta de iCloud (CloudKit, base de datos privada). Sin servidores propios.",
-      auth: "Gymest no requiere cuenta. La sincronización usa tu Apple ID de iCloud; no gestionamos ni vemos credenciales.",
+      auth: "Rexis no requiere cuenta. La sincronización usa tu Apple ID de iCloud; no gestionamos ni vemos credenciales.",
       contact:
         "Para cualquier cuestión sobre privacidad, escríbenos a samuparre96@gmail.com.",
     },

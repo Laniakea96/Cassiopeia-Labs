@@ -1,74 +1,28 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { AppData } from "@/types/app";
-import { statusLabel } from "@/components/home/FeaturedApps";
+import { PhoneFan, StoreBadges } from "./AppVisuals";
 
 interface Props {
   app: AppData;
 }
 
-const SECTION_LABELS: Record<string, string> = {
-  support: "Soporte",
-  privacy: "Privacidad",
-  terms: "Términos",
-};
-
+// Cabecera de la ficha de una app. Vive en el layout, así que es la misma en
+// Resumen, Soporte, Privacidad y Términos: al cambiar de pestaña solo cambia
+// el contenido de debajo.
 export default function AppHeader({ app }: Props) {
-  const pathname = usePathname();
-  // /apps/[slug]/<section> → cabecera compacta en subpáginas
-  const section = pathname.split("/")[3];
-  const sectionLabel = section ? SECTION_LABELS[section] : undefined;
   const glow = { "--glow": app.glow } as React.CSSProperties;
 
-  if (sectionLabel) {
-    return (
-      <header className="wrap app-head app-head-mini" style={glow}>
-        <Link
-          href={`/apps/${app.slug}`}
-          className={`app-head-icon ${app.iconClass}`}
-          aria-label={`Volver a ${app.name}`}
-        >
-          <img src={app.iconSrc} alt="" />
-        </Link>
-        <div>
-          <h1 className="app-head-title">
-            {sectionLabel} de {app.name}
-          </h1>
-          {(section === "privacy" || section === "terms") && (
-            <p className="app-head-date">Actualizado el {app.lastUpdated}</p>
-          )}
-        </div>
-      </header>
-    );
-  }
-
-  const stores = [
-    { href: app.links.appStore, label: "App Store" },
-    { href: app.links.playStore, label: "Google Play" },
-  ].filter((s): s is { href: string; label: string } => Boolean(s.href));
-
-  // Tres capturas en abanico junto al texto (la del medio, delante).
-  const fan =
-    app.screenshots.length >= 3
-      ? [
-          app.screenshots[1],
-          app.screenshots[0],
-          app.screenshots[4] ?? app.screenshots[2],
-        ]
-      : null;
+  const hasFan = app.screenshots.length >= 3;
 
   return (
     <header
-      className={`wrap app-head${fan ? " app-head-split" : ""}`}
+      className={`wrap app-head${hasFan ? " app-head-split" : ""}`}
       style={glow}
     >
       <div className="app-head-text">
         <div className={`app-head-icon app-head-icon-lg ${app.iconClass}`}>
           <img src={app.iconSrc} alt="" />
         </div>
-        <p className={`status status-${app.status}`}>{statusLabel(app)}</p>
         <h1 className="app-head-name">{app.name}</h1>
         <p className="app-head-tagline">{app.tagline}</p>
         <p className="app-head-desc">
@@ -76,18 +30,8 @@ export default function AppHeader({ app }: Props) {
         </p>
 
         <div className="app-head-actions">
-          {stores.length > 0 ? (
-            stores.map((s) => (
-              <a
-                key={s.label}
-                className="btn btn-star"
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Descargar en {s.label}
-              </a>
-            ))
+          {app.links.appStore || app.links.playStore ? (
+            <StoreBadges app={app} />
           ) : (
             <p className="app-head-soon">
               Todavía no está en las tiendas.{" "}
@@ -98,11 +42,16 @@ export default function AppHeader({ app }: Props) {
           )}
           {app.links.instagram && (
             <a
-              className="btn btn-line"
+              className="btn btn-line btn-instagram"
               href={app.links.instagram}
               target="_blank"
               rel="noopener noreferrer"
             >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5.5" />
+                <circle cx="12" cy="12" r="4.2" />
+                <circle cx="17.4" cy="6.6" r="1.1" className="dot" />
+              </svg>
               Instagram
             </a>
           )}
@@ -119,18 +68,7 @@ export default function AppHeader({ app }: Props) {
         </div>
       </div>
 
-      {fan && (
-        <div className="phone-fan" aria-hidden="true">
-          {fan.map((shot, i) => (
-            <img
-              key={shot.src}
-              className={`fan-phone fan-${i}`}
-              src={shot.src}
-              alt=""
-            />
-          ))}
-        </div>
-      )}
+      <PhoneFan app={app} />
     </header>
   );
 }

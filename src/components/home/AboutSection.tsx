@@ -2,7 +2,11 @@ import { siteConfig } from "@/data/siteConfig";
 
 export default function AboutSection() {
   return (
-    <section id="estudio" className="block wrap about" aria-labelledby="about-title">
+    <section
+      id="estudio"
+      className="block wrap about"
+      aria-labelledby="about-title"
+    >
       <figure className="about-photo">
         <div className="about-portrait">
           <span className="about-orbit" aria-hidden="true">
@@ -31,8 +35,10 @@ export default function AboutSection() {
       </figure>
 
       <div className="about-copy">
-        <h2 id="about-title" className="h2">
-          Un estudio, una persona y mucho cielo.
+        <h2 id="about-title" className="h2 about-title">
+          Un <span className="w-estudio">estudio</span>, una{" "}
+          <span className="w-persona">persona</span> y mucho{" "}
+          <span className="w-cielo">cielo</span>.
         </h2>
         <div className="about-text">
           <p>
@@ -42,14 +48,14 @@ export default function AboutSection() {
             Google Play, sin agencias ni intermediarios.
           </p>
           <p>
-            Me gusta pensar que eso se nota. Cada app recibe el mismo cuidado
-            de principio a fin, sin pasar por diez manos diferentes. Publico
-            cuando está lista y la mantengo mientras tenga sentido.
+            Me gusta pensar que eso se nota. Cada app recibe el mismo cuidado de
+            principio a fin, sin pasar por diez manos diferentes. Publico cuando
+            está lista y la mantengo mientras tenga sentido.
           </p>
           <p>
             También estoy abierto a incorporarme a un equipo o a colaborar en
-            proyectos puntuales de desarrollo multiplataforma y web. Si buscas
-            a alguien con visión de producto y autonomía técnica, hablemos.
+            proyectos puntuales de desarrollo multiplataforma y web. Si buscas a
+            alguien con visión de producto y autonomía técnica, hablemos.
           </p>
         </div>
       </div>
